@@ -1,9 +1,10 @@
 import requests
 import csv
 import time
+#import your API KEY from variable in python file
+#from your_file.py import key
 
-#import your API KEY as variable named key
-key = ""
+key=""
 
 def main():
     #name files to write
@@ -22,7 +23,7 @@ def main():
     #variable to store header for .csv file. due to sharing the function, make a [0,1] list and put the header information as a list in spot 1 
     port_header = ["",["PORT","PORT_NAME","AIR_VAL_MO","AIR_WGT_MO","VES_VAL_MO","VES_WGT_MO","GEN_VAL_MO","I_COMMODITY_LDESC","I_COMMODITY_SDESC","CTY_CODE","CTY_NAME","COMM_LVL","SUMMARY_LVL","I_COMMODITY","YEAR","MONTH"]]
 
-    item_header = ["",["I_COMMODITY_LDESC","I_COMMODITY_SDESC","GEN_VAL_MO","GEN_QY1_MO","UNIT_QY1","GEN_QY1_MO_FLAG","CTY_CODE","CTY_NAME","COMM_LVL","SUMMARY_LVL","I_COMMODITY","YEAR","MONTH"]]
+    item_header = ["",["I_COMMODITY_LDESC","I_COMMODITY_SDESC","GEN_VAL_MO","AIR_VAL_MO","AIR_WGT_MO","VES_VAL_MO","VES_WGT_MO","CTY_CODE","CTY_NAME","COMM_LVL","SUMMARY_LVL","I_COMMODITY","YEAR","MONTH"]]
     
     #write headers to .csv file
     write_csv(port_filename, port_header)
@@ -39,7 +40,7 @@ def main():
 
             #create variable for api url
             port_url = f"https://api.census.gov/data/timeseries/intltrade/imports/porths?get=PORT,PORT_NAME,AIR_VAL_MO,AIR_WGT_MO,VES_VAL_MO,VES_WGT_MO,GEN_VAL_MO,I_COMMODITY_LDESC,I_COMMODITY_SDESC,CTY_CODE,CTY_NAME&COMM_LVL=HS6&SUMMARY_LVL=DET&I_COMMODITY={selected[0]}*&YEAR={year}&MONTH={month}&key={key}"
-            item_url = f"https://api.census.gov/data/timeseries/intltrade/imports/hs?get=I_COMMODITY_LDESC,I_COMMODITY_SDESC,GEN_VAL_MO,GEN_QY1_MO,UNIT_QY1,GEN_QY1_MO_FLAG,CTY_CODE,CTY_NAME&COMM_LVL=HS10&SUMMARY_LVL=DET&I_COMMODITY={selected[0]}*&YEAR={year}&MONTH={month}&key={key}"
+            item_url = f"https://api.census.gov/data/timeseries/intltrade/imports/hs?get=I_COMMODITY_LDESC,I_COMMODITY_SDESC,GEN_VAL_MO,AIR_VAL_MO,AIR_WGT_MO,VES_VAL_MO,VES_WGT_MO,CTY_CODE,CTY_NAME&COMM_LVL=HS6&SUMMARY_LVL=DET&I_COMMODITY={selected[0]}*&YEAR={year}&MONTH={month}&key={key}"
             
             #take it slow
             time.sleep(5)

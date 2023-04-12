@@ -1,0 +1,3 @@
+mongoimport --type csv -d us_imports -c import_items --fields="I_COMMODITY_LDESC.string(),I_COMMODITY_SDESC.string(),GEN_VAL_MO.auto(),AIR_VAL_MO.auto(),AIR_WGT_MO.auto(),VES_VAL_MO.auto(),VES_WGT_MO.auto(),CTY_CODE.string(),CTY_NAME.string(),COMM_LVL.string(),SUMMARY_LVL.string(),I_COMMODITY.string(),YEAR.auto(),MONTH.auto()" --columnsHaveTypes --drop item_data.csv
+
+mongoimport --type csv -d us_imports -c import_ports --fields="PORT.string(),PORT_NAME.string(),AIR_VAL_MO.auto(),AIR_WGT_MO.auto(),VES_VAL_MO.auto(),VES_WGT_MO.auto(),GEN_VAL_MO.auto(),I_COMMODITY_LDESC.string(),I_COMMODITY_SDESC.string(),CTY_CODE.string(),CTY_NAME.string(),COMM_LVL.string(),SUMMARY_LVL.string(),I_COMMODITY.string(),YEAR.auto(),MONTH.auto()" --columnsHaveTypes --drop port_data.csv
