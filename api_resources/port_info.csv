@@ -1,0 +1,334 @@
+port_id,port_name,port_city,port_state,lat,lon
+1904,"Birmingham, Alabama - 1904 ",Birmingham,AL,33.5206824,-86.8024326
+1910,"Huntsville, Alabama - 1910 ",Huntsville,AL,34.729847,-86.5859011
+1901,"Mobile (Including Theodore), Alabama - 1901 ",Mobile,AL,30.6867339,-88.0848929
+3104,"Alcan, Alaska - 3104 ",Alcan,AK,62.72306,-141.18806
+3126,"Anchorage, Alaska - 3126 ",Anchorage,AK,61.2163129,-149.894852
+3106,"Dalton Cache, Alaska - 3106 ",Dalton Cache,AK,64.724809,-153.629618
+3129,"Dutch Harbor, Alaska - 3129 ",Dutch Harbor,AK,53.8867533,-166.5418001
+3111,"Fairbanks, Alaska - 3111 ",Fairbanks,AK,64.837845,-147.716675
+3101,"Juneau, Alaska - 3101 ",Juneau,AK,58.3019496,-134.419734
+3102,"Ketchikan, Alaska - 3102 ",Ketchikan,AK,55.3430696,-131.6466819
+3127,"Kodiak, Alaska - 3127 ",Anchorage,AK,61.2163129,-149.894852
+3128,"Nome, Alaska - 3128 ",Nome,AK,64.5011111,-165.4063889
+3115,"Sitka, Alaska - 3115 ",Sitka,AK,57.0524973,-135.337612
+3103,"Skagway, Alaska - 3103 ",Skagway,AK,59.4556412,-135.3116103
+3107,"Valdez, Alaska - 3107 ",Anchorage,AK,61.2163129,-149.894852
+3105,"Wrangell, Alaska - 3105 ",Wrangell,AK,56.4706022,-132.3829431
+2601,"Douglas, Arizona - 2601 ",Douglas,AZ,31.3471741,-109.5383567
+2602,"Lukeville, Arizona - 2602 ",Lukeville,AZ,31.8819798,-112.8153361
+2603,"Naco, Arizona - 2603 ",Naco,AZ,31.3373721,-109.9478251
+2604,"Nogales, Arizona - 2604 ",Nogales,AZ,31.3402134,-110.9360818
+2605,"Phoenix, Arizona - 2605 ",Phoenix,AZ,33.4484367,-112.074141
+2682,"Phoenix-Mesa Gateway Airport, Arizona - 2682 ",Mesa,AZ,33.4151005,-111.8314552
+2608,"San Luis, Arizona - 2608 ",San Luis,AZ,32.4934395,-114.7737551
+2606,"Sasabe, Arizona - 2606 ",Sasabe,AZ,31.4887016,-111.5420505
+2681,"Scottsdale Airport, Arizona - 2681 ","Scottsdale,",AZ,33.4942189,-111.926018
+2609,"Tucson, Arizona - 2609 ",Tucson,AZ,32.2228765,-110.9748477
+2003,"Little Rock-North Little Rock, Arkansas - 2003 ",Little Rock,AR,34.7465071,-92.2896267
+2084,"Rogers Airport, Arkansas - 2084 ",Rogers,AR,36.3320197,-94.1185366
+2502,"Andrade - Class A, California - 2502 ",Winterhaven,CA,32.7396688,-114.6351955
+2507,"Calexico East - Class A, California - 2507 ",Calexico,CA,32.6790572,-115.498703
+2503,"Calexico West - Class A, California - 2503 ",Calexico,CA,32.6790572,-115.498703
+2802,"Eureka, California - 2802 ",Eureka,CA,40.7906871,-124.1673746
+2803,"Fresno (2803/2882), California - 2803 ",Fresno,CA,36.7394421,-119.7848307
+2720,"Los Angeles International Airport-Cargo Operations, California - 2720 ",Los Angeles,CA,34.0536909,-118.242766
+2704,"Los Angeles/Long Beach Seaport, California - 2704 ",Long Beach,CA,33.7690164,-118.191604
+2721,"Ontario Airport, California - 2721 ",Ontario,CA,34.065846,-117.6484304
+2506,"Otay Mesa, California - 2506 ",San Diego,CA,32.7174202,-117.1627728
+2781,"Palm Springs, California - 2781 ",Palm Springs,CA,33.8246269,-116.540303
+2713,"Port Hueneme, California - 2713 ",Oxnard,CA,34.1976308,-119.1803818
+2835,"Sacramento, California - 2835 ",Sacramento,CA,38.5810606,-121.493895
+2782,"San Bernardino International Airport, California - 2782 ",San Bernardino,CA,34.1081621,-117.28946
+2501,"San Diego, California - 2501 ",San Diego,CA,32.7174202,-117.1627728
+2801,"San Francisco International Airport, California - 2801 ",San Francisco,CA,37.7790262,-122.419906
+2809,"San Francisco, California - 2809 ",San Francisco,CA,37.7790262,-122.419906
+2834,"San Jose International Airport, California - 2834 ",San Jose,CA,37.3361663,-121.890591
+2504,"San Ysidro - Class A, California - 2504 ",San Ysidro,CA,32.5520013,-117.0430813
+2505,"Tecate - Class A, California - 2505 ",Tecate,CA,32.5833711,-116.6285217
+2783,"Victorville - S. California Logistics Airport, California - 2783 ",Victorville,CA,34.5361067,-117.2911565
+3384,"Centennial Airport, Colorado - 3384 ",Englewood,CO,39.6482059,-104.9879641
+3307,"Denver, Colorado - 3307 ",Denver,CO,39.7392364,-104.984862
+3385,"Eagle County Regional Airport, Colorado - 3385 ",Gypsum,CO,39.6469294,-106.951711
+3383,"Rocky Mountain Metropolitan Airport, Colorado - 3383 ",Broomfield,CO,39.9403995,-105.05208
+0410,"Bridgeport, Connecticut - 0410 ",Bridgeport,CT,41.1670412,-73.2048348
+0411,"Hartford, Connecticut - 0411 ",Windsor Locks,CT,41.9281305,-72.643631
+0412,"New Haven, Connecticut - 0412 ",New Haven,CT,41.3082138,-72.9250518
+0413,"New London, Connecticut - 0413 ",New London,CT,41.3556187,-72.0997804
+1103,"Wilmington, Delaware - 1103 ",New Castle,DE,39.6620572,-75.5663132
+1803,"Area Port of Jacksonville, Florida - 1803 ",Jacksonville,FL,30.3321838,-81.655651
+1801,"Area Port of Tampa, Florida - 1801 ",Tampa,FL,27.9477595,-82.458444
+1816,"Cape Canaveral, Florida - 1816 ",Cape Canaveral,FL,28.4019534,-80.6046898
+1884,"Daytona Beach International Airport (UFA), Florida - 1884 ",Daytona Beach,FL,29.2108147,-81.0228331
+1805,"Fernandina Beach, Florida - 1805 ",Fernandina Beach,FL,30.6696818,-81.4625919
+1822,"Fort Myers, Florida - 1822 ",Fort Myers,FL,26.640628,-81.8723084
+5202,"Key West, Florida - 5202 ",Key West,FL,24.5625566,-81.7724368
+1881,"Lakeland Linder Airport, Florida - 1881 ",Lakeland,FL,28.0394654,-81.9498042
+1887,"Leesburg International Airport (UFA), Florida - 1887 ",Leesburg,FL,28.810823,-81.8778582
+1885,"Melbourne International Airport (UFA), Florida - 1885 ",Melbourne,FL,28.106471,-80.6371513
+5206,"Miami International Airport, Florida - 5206 ",Miami,FL,25.7741728,-80.19362
+5201,"Miami Seaport, Florida - 5201 ",Miami,FL,25.7741728,-80.19362
+1880,"Naples, Florida - 1880 ",Naples,FL,26.1421976,-81.7942944
+1888,"Orlando Executive Airport (UFA), Florida - 1888 ",Orlando,FL,28.5421109,-81.3790304
+1808,"Orlando International Airport, Florida - 1808 ",Orlando,FL,28.5421109,-81.3790304
+1809,"Orlando Sanford International Airport, Florida - 1809 ",Sanford,FL,28.8117345,-81.2680223
+1818,"Panama City, Florida - 1818 ",Panama City Beach,FL,30.1765914,-85.805386
+1819,"Pensacola, Florida, Florida - 1819 ",Pensacola,FL,30.421309,-87.2169149
+5203,"Port Everglades/Fort Lauderdale, Florida - 5203 ",Fort Lauderdale,FL,26.1223084,-80.1433786
+1821,"Port Manatee, Florida - 1821 ",PALMETTO,FL,27.5214269,-82.5723193
+1883,"Sarasota, Florida - 1883 ",Sarasota,FL,27.3365805,-82.5308545
+1889,"St. Augustine, Florida - 1889 ",St. Augustine,FL,29.8946952,-81.3145395
+1814,"St. Petersburg, Florida - 1814 ",Clearwater,FL,27.9658533,-82.8001026
+5204,"West Palm Beach, Florida - 5204 ",Riviera Beach,FL,26.784343,-80.0650293
+1704,"Atlanta, Georgia - 1704 ",Atlanta,GA,33.7489924,-84.3902644
+1701,"Brunswick, Georgia - 1701 ",Brunswick,GA,31.1499528,-81.4914894
+1703,"Savannah, Georgia - 1703 ",Savannah,GA,32.0564572,-81.0951271
+3205,Daniel K. Inouye International Airport - 3205 ,Honolulu,HI,21.304547,-157.855676
+3202,"Hilo, Hawaii - 3202 ",Hilo,HI,19.7073734,-155.08158
+3201,"Honolulu, Hawaii - 3201 ",Honolulu,HI,21.304547,-157.855676
+3203,"Kahului, Hawaii - 3203 ",Kahului,HI,20.8894101,-156.4727118
+3206,"Kona, Hawaii - 3206 ",Kailua-Kona,HI,19.641941,-155.996933
+3204,"Nawiliwili-Port Allen, Hawaii - 3204 ",Lihue,HI,21.9769622,-159.3687721
+2907,"Boise, Idaho - 2907 ",Boise,ID,43.6166163,-116.200886
+3302,"Eastport, ID, Idaho - 3302 ",Eastport,ID,48.99982,-116.1813567
+3308,"Porthill, ID, Idaho - 3308 ",Porthill,ID,48.9982855,-116.4979886
+3983,"Chicago Executive Airport, Wheeling, Illinois - 3983 ",Wheeling,IL,42.138889,-87.9310944
+3901,"Chicago, Illinois - 3901 ",Rosemont,IL,41.9941334,-87.8756737
+3908,"Davenport, IA-Moline and Rock Island, IL, Illinois - 3908 ",Moline,IL,41.5058344,-90.5136642
+3984,"DuPage Airport, West Chicago, Illinois - 3984 ",West Chicago,IL,41.8847507,-88.2039607
+4581,"MidAmerica St. Louis Airport, Mascoutah, Illinois � 4581 ",Mascoutah,IL,38.490327,-89.793154
+3902,"Peoria, Illinois - 3902 ",Peoria,IL,40.6938609,-89.5891008
+3909,"Rockford, Illinois - 3909 ",Rockford,IL,42.2713945,-89.093966
+3986,"South Bend International Airport, South Bend, Indiana � 3986 ",Chicago,IL,41.8755616,-87.6244212
+3987,University of Illinois Willard Airport - 3987 ,Chicago,IL,41.8755616,-87.6244212
+3981,"Waukegan National Airport, Waukegan, Illinois - 3981 ",Waukegan,IL,42.3636331,-87.8447938
+4116,"Evansville, IN, Indiana - 4116 ",Evansville,IN,37.9747645,-87.5558483
+4183,"Fort Wayne, Indiana - 4183 ",Fort Wayne,IN,41.0799898,-85.1386015
+3905,"Gary Chicago International Airport, Gary, Indiana - 3905 ",Gary,IN,41.6020962,-87.3370647
+4110,"Indianapolis, Indiana - 4110 ",Indianapolis,IN,39.7683331,-86.1583502
+3513,"Des Moines, Iowa - 3513 ",Des Moines,IA,41.5910323,-93.6046655
+4504,"Wichita, Kansas - 4504 ",Wichita,KS,37.6922361,-97.3375448
+4102,"Cincinnati, OH-Erlanger, KY, Kentucky - 4102 ",Erlanger,KY,39.0167275,-84.6007773
+4184,"Lexington, Kentucky - 4184 ",Lexington,KY,38.0464066,-84.4970393
+4115,"Louisville, Kentucky - 4115 ",Louisville,KY,38.2542376,-85.759407
+2004,"Baton Rouge, Louisiana - 2004 ",Baton Rouge,LA,30.4507936,-91.1391153
+2010,"Gramercy, Louisiana - 2010 ",Gramercy,LA,30.0474239,-90.6898128
+2017,"Lake Charles, Louisiana - 2017 ",Lake Charles,LA,30.2072293,-93.2061609
+2001,"Morgan City, Louisiana - 2001 ",Houma,LA,29.5957696,-90.7195348
+2002,"New Orleans, Louisiana - 2002 ",New Orleans,LA,29.9759983,-90.0782127
+2018,"Shreveport-Bossier City, Louisiana - 2018 ",Shreveport,LA,32.4707862,-93.7559378
+0102,"Bangor, Maine - 0102 ",Bangor,ME,44.8011821,-68.7778138
+0112,"Bar Harbor, Maine - 0112 ",Bangor,ME,44.8011821,-68.7778138
+0111,"Bath, Maine - 0111 ",South Portland,ME,43.6414716,-70.2408811
+0132,"Belfast, Maine - 0132 ",Bangor,ME,44.8011821,-68.7778138
+0127,"Bridgewater, Maine - 0127 ",Bridgewater,ME,46.427919,-67.844009
+0115,"Calais, Maine - 0115 ",Calais,ME,45.189032,-67.2781424
+0103,"Eastport, Maine - 0103 ",Eastport,ME,44.9054417,-66.9900876
+0107,"Fort Fairfield, Maine - 0107 ",Fort Fairfield,ME,46.7698261,-67.8345688
+0110,"Fort Kent, Maine - 0110 ",Fort Kent,ME,47.258728,-68.589706
+0106,"Houlton, Maine - 0106 ",Houlton,ME,46.1251286,-67.8407944
+0104,"Jackman, Maine - 0104 ",Sandy Bay Twp.,ME,45.76649535,-70.35422489829796
+0122,"Jonesport (Calais), Maine - 0122 ",Calais,ME,45.189032,-67.2781424
+0118,"Limestone, Maine - 0118 ",Limestone,ME,46.9111797,-67.8256861
+0109,"Madawaska, Maine - 0109 ",Madawaska,ME,47.355571,-68.321915
+0101,"Portland, Maine - 0101 ",South Portland,ME,43.6414716,-70.2408811
+0121,"Rockland (Belfast), Maine - 0121 ",Bangor,ME,44.8011821,-68.7778138
+0108,"Van Buren, Maine - 0108 ",Van Buren,ME,47.157506,-67.935333
+0105,"Vanceboro, Maine - 0105 ",Vanceboro,ME,45.5634998,-67.4297657
+1303,"Baltimore, Maryland - 1303 ",Baltimore,MD,39.2908816,-76.610759
+0401,"Boston, Massachusetts - 0401 ",Boston,MA,42.3554334,-71.060511
+0407,"Fall River (New Bedford), Massachusetts - 0407 ",New Bedford,MA,41.6362152,-70.934205
+0404,"Gloucester, Massachusetts - 0404 ",Beverly,MA,42.5584284,-70.8800491
+0416,"Lawrence (Gloucester), Massachusetts - 0416 ",Beverly,MA,42.5584284,-70.8800491
+0417,"Logan Airport, Massachusetts - 0417 ",East Boston,MA,42.3750973,-71.0392173
+0405,"New Bedford, Massachusetts - 0405 ",New Bedford,MA,41.6362152,-70.934205
+0406,"Plymouth (New Bedford), Massachusetts - 0406 ",New Bedford,MA,41.6362152,-70.934205
+0408,"Salem (Gloucester), Massachusetts - 0408 ",Beverly,MA,42.5584284,-70.8800491
+0402,"Springfield, Massachusetts - 0402 ",Springfield,MA,42.1018764,-72.5886727
+0403,"Worcester, Massachusetts - 0403 ",Worcester,MA,42.2625621,-71.8018877
+3805,"Battle Creek, Michigan - 3805 ",Battle Creek,MI,42.3192548,-85.1824269
+3883,"Capital Region International Airport Lansing, Michigan - 3883 ",Lansing,MI,42.7337712,-84.5553805
+3807,"Detroit Metropolitan Airport, Michigan - 3807 ",Detroit,MI,42.3315509,-83.0466403
+3801,"Detroit, Michigan - 3801 ",Detroit,MI,42.3315509,-83.0466403
+3806,"Grand Rapids, Michigan - 3806 ",Grand Rapids,MI,42.9632405,-85.6678639
+3802,"Port Huron, Michigan - 3802 ",Port Huron,MI,42.9815877,-82.440466
+3804,"Saginaw/Bay City/Flint, Michigan - 3804 ",Freeland,MI,43.5250265,-84.1227598
+3803,"Sault Sainte Marie, Michigan - 3803 ",Sault Sainte Marie,MI,46.4846922,-84.4114514275418
+,"Ashland, Wisconsin Port Of Entry ",Duluth,MN,46.7729322,-92.1251218
+3424,"Baudette, Minnesota - 3424 ",Baudette,MN,48.7124408,-94.600171
+3510,"Duluth, MN and Superior, WI, Minnesota - 3510 ",Duluth,MN,46.7729322,-92.1251218
+3613,"Grand Portage, Minnesota - 3613 ",Grand Portage,MN,47.963776,-89.6848121
+3604,"International Falls, Minnesota - 3604 ",International Falls,MN,48.601033,-93.4105904
+3430,"Lancaster, Minnesota - 3430 ",Lancaster,MN,48.8582488,-96.8045602
+3501,"Minneapolis-St. Paul, Minnesota - 3501 ",Bloomington,MN,44.8322405,-93.3204872
+3425,"Pinecreek, Minnesota - 3425 ",Roseau,MN,48.8457996,-95.7613231
+3581,"Rochester International Airport, Rochester, Minnesota - 3581 ",Rochester,MN,44.0234387,-92.4630182
+3426,"Roseau, Minnesota - 3426 ",Roseau,MN,48.8457996,-95.7613231
+3423,"Warroad, Minnesota - 3423 ",Warroad,MN,48.905266,-95.314404
+1902,"Gulfport, Mississippi - 1902 ",Gulfport,MS,30.3674198,-89.0928155
+1903,"Pascagoula, Mississippi - 1903 ",Pascagoula,MS,30.3646795,-88.5585995
+2015,"Vicksburg, Mississippi - 2015 ",Flowood,MS,32.3092861,-90.1386811
+4501,"Kansas City, Missouri - 4501 ",Kansas City,MO,39.100105,-94.5781416
+4506,"Spirit of St. Louis Airport, Missouri - 4506 ",Chesterfield,MO,38.661953,-90.5643258
+4505,"Springfield, Missouri - 4505 ",Springfield,MO,37.1968298,-93.2946576
+4503,"St. Louis, Missouri - 4503 ",St. Louis,MO,38.6319657,-90.2428756
+3310,"Area Port of Sweetgrass, Montana - 3310 ",Sweetgrass,MT,48.9970672,-111.9625745
+3386,"Bozeman Yellowstone User Fee Airport, Montana - 3386 ",Belgrade,MT,45.773279,-111.184535
+3305,"Butte Airport, MT, Montana - 3305 ",Butte,MT,46.0131505,-112.536508
+3322,"Del Bonita, MT, Montana - 3322 ",Cut Bank,MT,48.63304,-112.326162
+3304,"Great Falls Airport, MT, Montana - 3304 ",Great Falls,MT,47.5048851,-111.29189
+3348,"Helena Airport, Montana - 3348 ",Helena,MT,46.5927425,-112.036277
+3324,"Kalispell Airport, MT, Montana - 3324 ",Kalispell,MT,48.202158,-114.315321
+3319,"Morgan, MT, Montana - 3319 ",Loring,MT,48.7895367,-107.8619764
+3317,"Opheim, MT, Montana - 3317 ",Opheim,MT,48.857088,-106.407904
+3316,"Piegan, MT, Montana - 3316 ",Babb,MT,48.8592409,-113.4368242
+3301,"Raymond, Montana - 3301 ",Raymond,MT,48.8764172,-104.5802366
+3318,"Roosville, Montana - 3318 ",Eureka,MT,48.8799647,-115.0535
+3309,"Scobey, MT, Montana - 3309 ",Scobey,MT,48.792086,-105.419948
+3306,"Turner, MT, Montana - 3306 ",Turner,MT,48.8456288,-108.4048141
+3321,"Whitlash, Montana - 3321 ",Whitlash,MT,48.9083386,-111.2530312
+3323,"Wild Horse, MT, Montana - 3323 ",Havre,MT,48.5536972,-109.677802
+3325,"Willow Creek, Montana - 3325 ",Havre,MT,48.5536972,-109.677802
+3512,"Omaha, Nebraska - 3512 ",Omaha,NE,41.2587459,-95.9383758
+2722,"Las Vegas, Nevada - 2722 ",Las Vegas,NV,36.1672559,-115.148516
+2833,"Reno, Nevada - 2833 ",Reno,NV,39.5261206,-119.8126581
+0182,"Manchester (User Fee Airport), New Hampshire - 0182 ",Manchester,NH,42.9956397,-71.4547891
+0131,"Portsmouth, New Hampshire - 0131 ",Portsmouth,NH,43.0702223,-70.7548621
+4681,"Morristown Airport, New Jersey - 4681 ",Morristown,NJ,40.7970382,-74.4809868
+4601,"New York/Newark, New Jersey - 4601 ",Elizabeth,NJ,40.6639916,-74.2107006
+4602,"Perth Amboy, New Jersey - 4602 ",Perth Amboy,NJ,40.5200187,-74.2745215
+2407,"Albuquerque, New Mexico - 2407 ",Albuquerque,NM,35.0841034,-106.650985
+2406,"Columbus, New Mexico - 2406 ",Columbus,NM,31.8327963,-107.640227
+2408,"Santa Teresa, New Mexico - 2408 ",Santa Teresa,NM,31.8588727,-106.646571
+0983," Ithaca, New York - 0983 ",Ithaca,NY,42.4396039,-76.4968019
+1002,"Albany, New York - 1002 ",Albany,NY,42.6511674,-73.754968
+0708,"Alexandria Bay, New York - 0708 ",Alexandria Bay,NY,44.336127,-75.917931
+0981,"Binghamton, New York - 0981 ",Johnson City,NY,42.1157038,-75.9587873
+0901,"Buffalo, New York - 0901 ",Buffalo,NY,42.8867166,-78.8783922
+0706,"Cape Vincent, New York - 706 ",Cape Vincent,NY,44.123197,-76.330734
+0712,"Champlain, New York - 0712 ",Champlain,NY,44.986656,-73.446693
+4701,"John F. Kennedy International Airport, New York - 4701 ",Jamaica,NY,40.7029134,-73.8006429
+0704,"Massena, New York - 0704 ",Rooseveltown,NY,44.9728277,-74.7310168
+0701,"Ogdensburg, New York - 0701 ",Ogdensburg,NY,44.694285,-75.486374
+0903,"Rochester, New York - 0903 ",Rochester,NY,43.157285,-77.615214
+0906,"Syracuse, New York - 0906 ",N. Syracuse,NY,43.13479,-76.129924
+0715,"Trout River, New York - 0715 ",Constable,NY,44.929321,-74.297447
+1512,"Charlotte, North Carolina - 1512 ",Charlotte,NC,35.2272086,-80.8430827
+1502,"Greensboro/Winston-Salem, North Carolina - 1502 ",Greensboro,NC,36.0726355,-79.7919754
+1511,"Morehead City - Beaufort, North Carolina - 1511 ",Morehead City,NC,34.7229391,-76.7260436
+1503,"Raleigh-Durham, North Carolina - 1503 ",Morrisville,NC,35.824341,-78.8300321
+1501,"Wilmington, North Carolina - 1501 ",Wilmington,NC,34.2257282,-77.9447107
+3410,"Ambrose, North Dakota - 3410 ",Ambrose,ND,48.9539222,-103.4826921
+3413,"Antler, North Dakota - 3413 ",Antler,ND,48.9708532,-101.2823803
+3421,"Carbury, North Dakota - 3421 ",Souris,ND,48.9097383,-100.6815394
+3422,"Dunseith, North Dakota - 3422 ",Dunseith,ND,48.813057,-100.060968
+3411,"Fargo - Hector International Airport, North Dakota - 3411 ",Fargo,ND,46.877229,-96.789821
+3417,"Fortuna, North Dakota - 3417 ",Fortuna,ND,48.9107543,-103.7752713
+3427,"Grand Forks - Mark Andrews International Airport, North Dakota - 3427 ",Grand Forks,ND,47.9078244,-97.0592028
+3408,"Hannah, North Dakota - 3408 ",Hannah,ND,48.9716708,-98.6917884
+3415,"Hansboro, North Dakota - 3415 ",Hansboro,ND,48.9521858,-99.3807545
+3416,"Maida, North Dakota - 3416 ",Langdon,ND,48.7605902,-98.3678245
+3434,"Minot - Minot International Airport, North Dakota - 3434 ",Minot,ND,48.23251,-101.296273
+3404,"Neche, North Dakota - 3404 ",Neche,ND,48.9826245,-97.5519408
+3420,"Noonan, North Dakota - 3420 ",Noonan,ND,48.888919,-103.008794
+3406,"Northgate, North Dakota - 3406 ",Flaxton,ND,48.8986389,-102.3923913
+3401,"Pembina - (Area Port), North Dakota - 3401 ",Pembina,ND,48.96913,-97.248351
+3403,"Portal, North Dakota - 3403 ",Portal,ND,48.9958637,-102.5496127
+3405,"Saint John, North Dakota - 3405 ",St. John,ND,48.9444517,-99.7109743
+3409,"Sarles, North Dakota - 3409 ",Sarles,ND,48.94584,-98.995961
+3414,"Sherwood, North Dakota - 3414 ",Sherwood,ND,48.9600187,-101.632661
+3407,"Walhalla, North Dakota - 3407 ",Walhalla,ND,48.923328,-97.918148
+3419,"Westhope, North Dakota - 3419 ",Westhope,ND,48.909464,-101.020712
+3433,"Williston Basin International Airport, Williston, ND - 3433 ",Williston,ND,48.1465457,-103.621814
+4122,"Ashtabula/Conneaut, Ohio - 4122 ",Ashtabula,OH,41.865054,-80.789809
+4101,"Cleveland, Ohio - 4101 ",Middleburg Heights,OH,41.3614401,-81.812912
+4103,"Columbus, Ohio - 4103 ",Groveport,OH,39.8522449,-82.8868636
+4104,"Dayton, Ohio - 4104 ",Vandalia,OH,39.8906122,-84.1988308
+4105,"Toledo-Sandusky-Port Clinton, Ohio - 4105 ",Port Clinton,OH,41.5119954,-82.9376919
+5504,"Oklahoma City, Oklahoma - 5504 ",Oklahoma City,OK,35.4729886,-97.5170536
+5505,"Tulsa, Oklahoma - 5505 ",Tulsa,OK,36.1563122,-95.9927516
+2901,"Astoria, Oregon - 2901 ",Astoria,OR,46.1882007,-123.8319802
+2903,"Coos Bay, Oregon - 2903 ",North Bend,OR,43.4065089,-124.2242824
+2983,"Hillsboro, Oregon - 2983 ",Hillsboro,OR,45.5228939,-122.989827
+2902,"Newport, Oregon - 2902 ",Newport,OR,44.636755,-124.053442
+2904,"Portland, Oregon - 2904 ",Portland,OR,45.5202471,-122.674194
+4106,"Erie, Pennsylvania - 4106 ",Erie,PA,42.1294712,-80.0852695
+1109,"Harrisburg, Pennsylvania - 1109 ",Mechanicsburg,PA,40.2101972,-77.0047276
+1101,"Philadelphia, Pennsylvania - 1101 ",Philadelphia,PA,39.9527237,-75.1635262
+1104,"Pittsburgh, Pennsylvania - 1104 ",Pittsburgh,PA,40.4416941,-79.9900861
+0501,"Newport, Rhode Island - 0501 ",Warwick,RI,41.7002024,-71.4161108
+0502,"Providence, Rhode Island - 0502 ",Warwick,RI,41.7002024,-71.4161108
+1601,"Charleston, South Carolina - 1601 ",Charleston,SC,32.7884363,-79.9399309
+1604,"Columbia, South Carolina - 1604 ",West Columbia,SC,33.9934867,-81.0739826
+1602,"Georgetown, South Carolina - 1602 ",Georgetown,SC,33.376834,-79.2944965
+1603,"Greenville-Spartanburg, South Carolina - 1603 ",Greer,SC,34.9381361,-82.2272119
+1681,"Myrtle Beach International Airport, South Carolina - 1681 ",Myrtle Beach,SC,33.6956461,-78.8900409
+3502,South Dakota Sioux Falls Regional Airport � Joe Foss Field - 3502 ,Sioux Falls,SD,43.5488256,-96.7307737
+2008,"Chattanooga, Tennessee - 2008 ",Chattanooga,TN,35.0457219,-85.3094883
+2016,"Knoxville, Tennessee - 2016 ",Knoxville,TN,35.9603948,-83.9210261
+2006,"Memphis, Tennessee - 2006 ",Memphis,TN,35.1460249,-90.0517638
+2007,"Nashville, Tennessee - 2007 ",Nashville,TN,36.1622767,-86.7742984
+2027,"Tri-Cities, Tennessee - 2027 ",Blountville,TN,36.5331586,-82.326806
+5584,"Addison Airport, Texas - 5584 ",Addison,TX,32.960477850000004,-96.8300673063398
+5583,"Alliance Airport, Texas - 5583 ",Fort Worth,TX,32.753177,-97.3327459
+5502,"Amarillo, Texas - 5502 ",Amarillo,TX,35.2072185,-101.833824
+5506,"Austin, Texas - 5506 ",Austin,TX,30.2711286,-97.7436995
+2301,"Brownsville, Texas - 2301 ",Brownsville,TX,25.9140277,-97.4890879
+5382,"Conroe, Texas - 5382 ",Conroe,TX,30.3118769,-95.4560512
+5312,"Corpus Christi, Texas - 5312 ",Corpus Christi,TX,27.7635302,-97.4033191
+5501,"Dallas/Ft. Worth, Texas - 5501 ",Irving,TX,32.8295183,-96.9442177
+2302,"Del Rio, Texas - 2302 ",Del Rio,TX,29.3655405,-100.894698
+2303,"Eagle Pass, Texas - 2303 ",Eagle Pass,TX,28.7099337,-100.493813
+2402,"El Paso, Texas - 2402 ",El Paso,TX,31.7865623,-106.441207
+5311,"Freeport, Texas - 5311 ",Freeport,TX,28.9541368,-95.3596617
+2383,Harlingen Airport (Valley International Airport) � 2383 ,Harlingen,TX,26.1907543,-97.6960599
+2305,"Hidalgo, Texas - 2305 ",Pharr,TX,26.1947962,-98.1836216
+5309,"Houston Airport, Texas - 5309 ",Houston,TX,29.7589382,-95.3676974
+5301,"Houston Seaport, Texas - 5301 ",Houston,TX,29.7589382,-95.3676974
+2304,"Laredo, Texas - 2304 ",Laredo,TX,27.5236998,-99.497352
+5503,"Lubbock, Texas - 5503 ",Lubbock,TX,33.5634402,-101.8792389
+5585,"McKinney, Texas - 5585 ",Mckinney,TX,33.1976496,-96.6154471
+5582,"Midland, Texas - 5582 ",Midland,TX,31.9973662,-102.077948
+2101,"Port Arthur-Beaumont, Texas - 2101 ",Port Arthur,TX,29.8988618,-93.9288723
+5313,"Port Lavaca-Point Comfort, Texas - 5313 ",Corpus Christi,TX,27.7635302,-97.4033191
+2403,"Presidio, Texas - 2403 ",Presidio,TX,29.5635581,-104.371552
+2309,"Progreso, Texas - 2309 ",Progreso,TX,26.0922991,-97.9572242
+2307,"Rio Grande City, Texas - 2307 ",Rio Grande City,TX,26.3827771,-98.8205251
+2310,"Roma, Texas - 2310 ",Roma,TX,26.4070669,-99.0055462
+2102,"Sabine, Texas - 2102 ",Pt Arthur,TX,29.8988618,-93.9288723
+5507,"San Antonio, Texas - 5507 ",San Antonio,TX,29.4246002,-98.4951405
+2381,South Texas International Airport at Edinburg - 2381 ,Edinburg,TX,26.3013982,-98.1624501
+5381,"Sugar Land, Texas - 5381 ",Sugar Land,TX,29.6196787,-95.6349463
+2404,"Tornillo, Texas - 2404 ",Tornillo,TX,31.4453942,-106.088304
+3303,"Salt Lake City, Utah - 3303 ",Salt Lake City,UT,40.7596198,-111.886797
+0206,"Beecher Falls, Vermont - 0206 ",Beecher Falls,VT,45.0085694,-71.5072002
+0207,"Burlington International Airport, Vermont - 0207 ",South Burlington,VT,44.4671635,-73.1715669
+0209,"Derby Line, Vermont - 0209 ",Derby Line,VT,45.0053262,-72.0996523
+0212,"Highgate Springs, Vermont - 0212 ",Highgate Springs,VT,44.979319,-73.1053021
+0211,"Norton, Vermont - 0211 ",Norton,VT,45.0096336,-71.7944363
+0203,"Richford, Vermont - 0203 ",Richford,VT,44.9965604,-72.671942
+0201,"St. Albans, Vermont - 0201 ",St. Albans,VT,44.8107911,-73.0833607
+1410,"Front Royal, Virginia - 1410 ",Front Royal,VA,38.9178538,-78.1917718
+1412,"New River Valley Airport, Virginia - 1412 ",Dublin,VA,37.1056784,-80.6853435
+1401,"Norfolk-Newport News, Virginia - 1401 ",Norfolk,VA,36.8448348,-76.2863999
+5401,"Port of Washington-Dulles, Virginia - 5401 ",Sterling,VA,39.003809849999996,-77.40832792370676
+1404,"Richmond - Petersburg, Virginia - 1404 ",Richmond,VA,37.5385087,-77.43428
+3010,Anacortes - 3010 ,Anacortes,WA,48.5020123,-122.623735
+3005,Bellingham - 3005 ,Bellingham,WA,48.7544012,-122.478836
+3004,"Blaine, Washington - 3004 ",Blaine,WA,48.9881108,-122.743575
+3014,Friday Harbor - 3014 ,Friday Harbor,WA,48.5342662,-123.017124
+,Kenneth G Ward Port of Entry  ,Lynden,WA,48.9466041,-122.4569315
+2905,"Longview, Washington - 2905 ",Longview,WA,46.1377048,-122.934462
+3019,"Oroville, WA, Washington - 3019 ",Oroville,WA,48.9376147,-119.436168
+3007,"Port Angeles, Washington - 3007 ",Port Angeles,WA,48.118146,-123.430741
+3001,"Seattle, Washington - 3001 ",Seattle,WA,47.6038321,-122.330062
+3022,"Spokane, Washington - 3022 ",Spokane,WA,47.6571934,-117.42351
+3009,"Sumas, Washington - 3009 ",Sumas,WA,49.0000244,-122.2649118
+3002,"Tacoma, Washington, Washington - 3002 ",Fife,WA,47.2359524,-122.3626381
+1409,"Charleston, West Virginia - 1409 ",Charleston,WV,38.3505995,-81.6332812
+3781,"Appleton International Airport, Appleton, Wisconsin - 3781 ",Appleton,WI,44.2613967,-88.4069744
+3703,"Green Bay, Wisconsin - 3703 ",Green Bay,WI,44.5126379,-88.0125794
+3701,"Milwaukee, Wisconsin - 3701 ",Milwaukee,WI,43.0349931,-87.922497
+3708,"Racine, Wisconsin - 3708 ",Racine,WI,42.7260523,-87.7825242
+3782,"Sheboygan County Memorial Airport, Wisconsin - 3782 ",Sheboygan Falls,WI,43.7291617,-87.8106439
+3332,"Natrona County Airport, Wyoming - 3332 ",Casper,WY,42.8501191,-106.325138

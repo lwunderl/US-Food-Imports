@@ -1,9 +1,8 @@
 import requests
 import csv
 import time
-#import your API KEY from variable in python file
-#from your_file.py import key
 
+#from your_file.py import key
 key=""
 
 def main():
@@ -41,21 +40,23 @@ def main():
             #create variable for api url
             port_url = f"https://api.census.gov/data/timeseries/intltrade/imports/porths?get=PORT,PORT_NAME,AIR_VAL_MO,AIR_WGT_MO,VES_VAL_MO,VES_WGT_MO,GEN_VAL_MO,I_COMMODITY_LDESC,I_COMMODITY_SDESC,CTY_CODE,CTY_NAME&COMM_LVL=HS6&SUMMARY_LVL=DET&I_COMMODITY={selected[0]}*&YEAR={year}&MONTH={month}&key={key}"
             item_url = f"https://api.census.gov/data/timeseries/intltrade/imports/hs?get=I_COMMODITY_LDESC,I_COMMODITY_SDESC,GEN_VAL_MO,AIR_VAL_MO,AIR_WGT_MO,VES_VAL_MO,VES_WGT_MO,CTY_CODE,CTY_NAME&COMM_LVL=HS6&SUMMARY_LVL=DET&I_COMMODITY={selected[0]}*&YEAR={year}&MONTH={month}&key={key}"
+
+            #take it slow
+            time.sleep(3)            
             
-            #take it slow
-            time.sleep(5)
-
             #store data for ports
-            port_data = get_port_data(port_url)
-
-            #take it slow
-            time.sleep(5)
-
-            #store data for items
-            item_data = get_item_data(item_url)
+            port_data = get_url_data(port_url)
 
             #write data to .csv
             write_csv(port_filename, port_data)
+
+            #take it slow
+            time.sleep(3)
+
+            #store data for items
+            item_data = get_url_data(item_url)
+
+            #write data to .csv
             write_csv(item_filename, item_data)
 
             #add to the record count and print progress
@@ -79,17 +80,7 @@ def write_csv(filename, input_data):
             writer.writerow(row)
 
 #retrieve port api data
-def get_port_data(url):
-    response = requests.get(url)
-    #RequestsJSONDecodeError
-    #JSONDecodeError
-    try:
-        return response.json()
-    except ValueError:
-        return ""
-
-#retrieve item api data
-def get_item_data(url):
+def get_url_data(url):
     response = requests.get(url)
     #RequestsJSONDecodeError
     #JSONDecodeError
