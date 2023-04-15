@@ -1,0 +1,5 @@
+API call for HS10 level detail for an item
+https://api.census.gov/data/timeseries/intltrade/imports/hs?get=I_COMMODITY_LDESC,I_COMMODITY_SDESC,GEN_VAL_MO,GEN_QY1_MO,UNIT_QY1,GEN_QY1_MO_FLAG,CTY_CODE,CTY_NAME&COMM_LVL=HS10&SUMMARY_LVL=DET&I_COMMODITY=080390*&YEAR=2022&MONTH=12
+
+API call for HS6 level detail for items by port
+https://api.census.gov/data/timeseries/intltrade/imports/porths?get=PORT,PORT_NAME,AIR_VAL_MO,AIR_WGT_MO,VES_VAL_MO,VES_WGT_MO,GEN_VAL_MO,I_COMMODITY_LDESC,I_COMMODITY_SDESC,CTY_CODE,CTY_NAME&COMM_LVL=HS6&SUMMARY_LVL=DET&I_COMMODITY=080390*&YEAR=2022&MONTH=12
