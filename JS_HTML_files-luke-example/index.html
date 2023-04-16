@@ -21,15 +21,18 @@
     <div class="row">
       <div class="col-md-2">
         <div class="well">
-          <h5>Test Subject ID No.:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)">
+          <h5>Select a Commodity:</h5>
+          <select id="selCommodity" onchange="commodityChanged(this.value)">
+          </select>
+          <h5>Select a Month:</h5>
+          <select id="selMonth" onchange="monthChanged(this.value)">
           </select>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Commodity Information</h3>
           </div>
-          <div id="sample-metadata" class="panel-body"></div>
+          <div id="info-panel" class="panel-body"></div>
         </div>
       </div>
       <div class="col-md-5">
