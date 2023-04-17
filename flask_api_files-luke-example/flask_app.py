@@ -22,23 +22,8 @@ import_commodities = db["import_commodities"]
 import_ports = db["import_ports"]
 port_information = db["us_port_information"]
 
-#create variable for the Flask
-app = Flask(__name__)
-CORS(app)
-
-@app.route("/")
-def welcome():
-    #List all available api routes.
-    return (
-        f"Available Routes:<br>"
-        f"/api/v1.0/commoditybyport<br>"
-        f"/api/v1.0/commoditybycountry<br>"
-        f"/api/v1.0/totaltradebycountry"
-    )
-
-@app.route("/api/v1.0/commoditybyport")
-def get_portdata():
-    # Query commodity by port by month
+#pre-calculate port data for faster loading
+def calculate_port(import_ports, port_information):
     # Build the aggregation pipeline for commodity value by port by month
     group_query = {'$group': {"_id": {"PORT_NAME": "$PORT_NAME",
                                     "PORT": "$PORT",
@@ -77,11 +62,13 @@ def get_portdata():
             result["_id"]["LATITUDE"] = 37.0902
             result["_id"]["LONGITUDE"] = -95.7129
             pass
-    return JSONEncoder().encode(api_return)
+    return api_return
 
-@app.route("/api/v1.0/commoditybycountry")
-def get_countrytotal():
-    # Query commodity by country by month
+#call calculate port function to pre-caclulate the api information for faster page loading
+port_api = calculate_port(import_ports, port_information)
+
+#pre-caclulate commodity data for faster loading
+def calculate_commodity(import_commodities):
     # Build the aggregation pipeline for commodity value by country by month
     group_query = {'$group': {"_id": {"CTY_NAME": "$CTY_NAME",
                                     "CTY_CODE": "$CTY_CODE",
@@ -106,11 +93,14 @@ def get_countrytotal():
 
     # Run the pipeline through the aggregate method, cast the results as a list, and save the results to a variable
     query_results = list(import_commodities.aggregate(pipeline))
-    return JSONEncoder().encode(query_results)
 
-@app.route("/api/v1.0/totaltradebycountry")
-def get_commoditydata():
-    #Query country totals by month
+    return query_results
+
+#create variable to store calculate commodity function to pre-caclulate the api information for faster page loading
+commodity_api = calculate_commodity(import_commodities)
+
+#pre-caclulate total country trade for faster loading
+def calculate_country_trade(import_commodities):
     # Build the aggregation pipeline for total country value by month
     group_query = {'$group': {"_id": {"CTY_NAME": "$CTY_NAME",
                                     "CTY_CODE": "$CTY_CODE",
@@ -133,7 +123,39 @@ def get_commoditydata():
 
     # Run the pipeline through the aggregate method, cast the results as a list, and save the results to a variable
     query_results = list(import_commodities.aggregate(pipeline))
-    return JSONEncoder().encode(query_results)
+    return query_results
+
+#create variable to store calculate commodity function to pre-caclulate the api information for faster page loading
+trade_api = calculate_country_trade(import_commodities)
+
+#create variable for the Flask
+app = Flask(__name__)
+CORS(app)
+
+@app.route("/")
+def welcome():
+    #List all available api routes.
+    return (
+        f"Available Routes:<br>"
+        f"/api/v1.0/commoditybyport<br>"
+        f"/api/v1.0/commoditybycountry<br>"
+        f"/api/v1.0/totaltradebycountry"
+    )
+
+@app.route("/api/v1.0/commoditybyport")
+def get_port_data():
+    # Query commodity by port by month
+    return JSONEncoder().encode(port_api)
+
+@app.route("/api/v1.0/commoditybycountry")
+def get_country_data():
+    # Query commodity by country by month
+    return JSONEncoder().encode(commodity_api)
+
+@app.route("/api/v1.0/totaltradebycountry")
+def get_trade_by_country():
+    #Query country totals by month
+    return JSONEncoder().encode(trade_api)
 
 if __name__ == "__main__":
     app.run(debug=True)
