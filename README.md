@@ -8,10 +8,10 @@ The purpose of this project is to explore US trade relationship with foreign cou
 ## Method
 
 ## Technology Used
-Flask
-Pymongo
-MongoDB
-HTML/CSS
+Flask,
+Pymongo,
+MongoDB,
+HTML/CSS,
 JavaScript
 
 ## Questions Addressed
@@ -21,9 +21,9 @@ What are the imported volumes and values of the selected food items?
 what are amounts of the selected items imported or consumed monthly?
 
 ## Steps Involve
-Data collation/filteration
-Data exploration
-Data visualization
+Data collation/filteration,
+Data exploration,
+Data visualization,
 Writup/reports
 
 ## Limitations
