@@ -11,18 +11,20 @@ body {
 
 .comment-header {
     margin-left: 140px;
+    margin-right: 100px;
 }
 
 .comments {
     margin-left: 140px;
+    margin-right: 140px;
 }
 
 .dropdown-title {
-    margin-left: 125px;
+    margin-left: 140px;
 }
 
 .dropdown {
-    margin-left: 125px;
+    margin-left: 160px;
 }
 
 .header-text {

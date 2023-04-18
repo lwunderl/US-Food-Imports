@@ -27,7 +27,7 @@
 <!-- Create body of html -->
 <body>
 
-    <!-- Title and Title Image-->
+    <!-- Title and Title Image -->
     <div class = "container-fluid">
         <div class="row">
             <div class="col-sm d-flex justify-content-center align-items-center">
@@ -36,15 +36,13 @@
                 <div class="header-text border border-dark bg-dark rounded">U.S. Food Imports - An Exploratory Analysis</div>
             </div>
         </div>
-    </div>
 
-    <br>
-    <br>
+        <br>
+        <br>
 
-    <!-- Key Findings section -->
-    <div class = "container-fluid">
+        <!-- Key Findings section -->
         <div class="row">
-            <div class="col-11">
+            <div class="col-sm">
                 <h4 class = "comment-header">Key Findings</h4>
                     <ul class = "comments text-wrap">
                         <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed egestas massa, ut suscipit quam. Nulla et mauris ac libero semper laoreet. Pellentesque at dignissim tortor. Suspendisse vitae sapien eu tellus mollis ornare. Morbi posuere eget ante et accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.</li>
@@ -53,53 +51,49 @@
                     </ul>
             </div>
         </div>
-    </div>
 
-    <br>
+        <br>
 
-    <!-- Dropdown title and dropdown section -->
-    <div class = "container-fluid">
-        <div class="col-11">
-            <h5 class="dropdown-title text-wrap">Select from the following options to see specific items and import seasonality:</h5>
-            <div class="row">
-                <div class="col-5">
+        <!-- Dropdown title and dropdown section -->
+        <div class = "row">
+            <div class="col-sm">
+                <h5 class="dropdown-title text-wrap">Select from the following options to see specific items and import seasonality:</h5>
+                <div class="row">
                     <h7 class="dropdown">Select Food Item</h7>
-                    <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                    <select id="selCommodity" onchange="optionChanged(this.value)"></select>
                 </div>
-                <div class="col-5">
-                    <h7>Select Month</h7>
-                    <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                <br>
+                <div class="row">
+                    <h7 class="dropdown">Select Month</h7>
+                    <select id="selMonth" onchange="optionChanged(this.value)"></select>
                 </div>
             </div>
         </div>
-    </div>
 
     <br>
     <br>
     <br>
 
     <!-- Pie Chart and Choropleth map row -->
-    <div class = "container-fluid">
+
         <div class="row">
             <div class="col-6 d-flex justify-content-center">
                 <!-- LOOK HERE: replace below with <script type="text/javascript" src=file_name.js></script> -->
                 <!-- may need to format in style.css -->
                 <img src="C:\Users\Tyler\Desktop\US-Food-Imports\html_css_test\images\pie_chart_img.png" alt="Pie Chart"/>
             </div>
-            <div class="col-5 d-flex justify-content-center">
+            <div class="col-6 d-flex justify-content-center">
                 <!-- LOOK HERE: replace below with <script type="text/javascript" src=file_name.js></script> -->
                 <!-- may need to format in style.css -->
                 <img src="C:\Users\Tyler\Desktop\US-Food-Imports\html_css_test\images\choropleth_map_img.png" alt="Choropleth Map" />
             </div>
         </div>
-    </div>
 
     <br>
     <br>
     <br>
 
     <!-- Horizontal bar chart analysis -->
-    <div class = "container-fluid">
         <div class="row">
             <div class="col-6">
             <h4 class = "comment-header">*Title for Bar Chart Analysis*</h4>
@@ -111,10 +105,17 @@
             </div>
             <div class="col-5 d-flex justify-content-center">
                 <!-- LOOK HERE: replace below with <script type="text/javascript" src=file_name.js></script> -->
+                <!-- <div id = "bar" for any plotly or chart.js -->
                 <!-- may need to format in style.css -->
                 <img src="C:\Users\Tyler\Desktop\US-Food-Imports\html_css_test\images\bar_chart_img.png" alt="Bar Chart" />
             </div>
         </div>
     </div>
+
+<!-- javascript and plotly scripts -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="./static/app.js"></script>
+
 </body>
 </html>
