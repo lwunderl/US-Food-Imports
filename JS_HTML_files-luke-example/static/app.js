@@ -112,7 +112,6 @@ function createPieChart(data, currentMonth, currentCommodity) {
 }
 
 function createBarGraph(data, currentCommodity) {
-    //prepare variables for bar graph
 
     let monthArray = {"January":0,"February":0,"March":0,"April":0,"May":0,"June":0,"July":0,"August":0,"September":0,"October":0,"November":0,"December":0};
     for (let i = 0; i < data.length; i++) {
@@ -157,10 +156,10 @@ function createBarGraph(data, currentCommodity) {
     }
 
     let yValues = Object.values(monthArray)
-    let xLabels = Object.keys(monthArray)
+    //let xLabels = Object.keys(monthArray)
 
     // create bar layout for plotly
-    let barLayout = {
+    /*let barLayout = {
         title:`Monthly Import Values for<br>${currentCommodity}`,
         height: 500,
         xaxis: {
@@ -172,13 +171,16 @@ function createBarGraph(data, currentCommodity) {
             automargin: true,
         }
     };
+*/
 
     // Chart JS
+    // NEED TO UPDATE. DOESN'T PARSE THROUGH SELECTION
     const ctx = document.getElementById('chartId').getContext("2d")
     new Chart (ctx, {
       type: 'bar',
       options: {
-        animation: false,
+        response: true,
+        animation: true,
         onHover: {
             legend: {
                 display: false
@@ -186,19 +188,19 @@ function createBarGraph(data, currentCommodity) {
         }
         },
         plugins: {
-          legend: {
-            display: false
-          },
-          title: {
-            display: true,
-            text: `Monthly Import Values for<br>${currentCommodity}`,
-            padding: {
-                top: 10,
-                bottom: 30
-            }
+            title: {
+                display: true,
+                text: `Monthly Import Values for<br>${currentCommodity}`,
+                padding: {
+                    top: 10,
+                    bottom: 30
+                }
+              },
+            legend: {
+                display: false
           },
           tooltip: {
-            enabled: false
+            enabled: true
           }
         },
       data: {
@@ -215,6 +217,81 @@ function createBarGraph(data, currentCommodity) {
       }
     });
     //Plotly.newPlot("bar", barGraph, barLayout, {responsive: true})
+};
+
+// Combine choropleth with amount of food $$ with port cities each with clickable layer
+function createMarkerChart(data, currentMonth, currentCommodity) {
+    var map = L.map('marker').setView([51.505, -0.09], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+
+    var marker = L.marker([51.5, -0.09]).addTo(map);
+
+    var circle = L.circle([51.508, -0.11], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 500
+    }).addTo(map);
+
+    var polygon = L.polygon([
+        [51.509, -0.08],
+        [51.503, -0.06],
+        [51.51, -0.047]
+    ]).addTo(map);
+
+    marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+    circle.bindPopup("I am a circle.");
+    polygon.bindPopup("I am a polygon.");
+
+    var popup = L.popup();
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent("You clicked the map at " + e.latlng.toString())
+            .openOn(map);
+    }
+
+    map.on('click', onMapClick);
+    
+
+    //prepare markers chart data
+    portLat = []
+    portLong= []
+    portLabels = []
+
+    /* Example: 
+    var littleton = L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.'),
+        denver    = L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.'),
+        aurora    = L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.'),
+        golden    = L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.');
+
+    var cities = L.layerGroup([littleton, denver, aurora, golden]);
+    */
+
+    for (let i = 0; i < data.length; i++) {
+        //optimize return and loading time. There's a better way, but I'm not sure how to yield a return
+        if (data[i]._id.MONTH == currentMonth && data[i]._id.I_COMMODITY_SDESC == currentCommodity) {
+            portLabels.push(data[i]._id.PORT_NAME);
+            portValues.push(data[i].total_value);
+            }
+        };
+
+    let pieChart = [{
+        values: portValues.slice(0,10),
+        labels: portLabels.slice(0,10),
+        type: "pie"
+      }];
+      
+    /*let pieLayout = {
+        title:`Top Ten Ports of Entry for<br>${currentCommodity}<br>in MONTH ${currentMonth}`,
+        height: 500,
+        showlegend: false
+      };
+      */
+      
+      Plotly.newPlot("marker", pieChart, pieLayout, {responsive: true});
 }
 
 //look at data
@@ -227,6 +304,7 @@ d3.json(commodityUrl).then(function (data){
 
 d3.json(portUrl).then(function (data){
     createPieChart(data, 1, "APPLES, FRESH")
+    createMarkerChart(data, 1, "APPLES,FRESH")
 });
 
 function onChanged() {
@@ -239,6 +317,7 @@ function onChanged() {
     });
     d3.json(portUrl).then(function (data){
         createPieChart(data, currentMonth, currentCommodity);
+        createMarkerChart(data, currentMonth, currentCommodity)
     });
 }
 
