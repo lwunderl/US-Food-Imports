@@ -111,6 +111,107 @@ function createPieChart(data, currentMonth, currentCommodity) {
       Plotly.newPlot("pie", pieChart, pieLayout, {responsive: true});
 }
 
+// Chart JS
+// Global variables
+const xLabels = [];
+const yValues = [];
+
+//call chart function
+
+function createBarGraph(all_data, currentCommodity) {
+    //await 
+    //const ctx = document.getElementById('chartId').getContext("2d");
+    const monthArray = {"January":0,"February":0,"March":0,"April":0,"May":0,"June":0,"July":0,"August":0,"September":0,"October":0,"November":0,"December":0};
+    for (let i = 0; i < data.length; i++) {
+        if (all_data[i]._id.I_COMMODITY_SDESC == currentCommodity) {
+            if (data[i]._id.MONTH == 1){
+                monthArray.January += data[i]._id.GEN_VAL_MO
+            }
+            else if (data[i]._id.MONTH == 2){
+                monthArray.February += data[i]._id.GEN_VAL_MO
+            }
+            else if (data[i]._id.MONTH == 3){
+                monthArray.March += data[i]._id.GEN_VAL_MO
+            }
+            else if (data[i]._id.MONTH == 4){
+                monthArray.April += data[i]._id.GEN_VAL_MO
+            }
+            else if (data[i]._id.MONTH == 5){
+                monthArray.May += data[i]._id.GEN_VAL_MO
+            }
+            else if (data[i]._id.MONTH == 6){
+                monthArray.June += data[i]._id.GEN_VAL_MO
+            }
+            else if (data[i]._id.MONTH == 7){
+                monthArray.July += data[i]._id.GEN_VAL_MO
+            }
+            else if (data[i]._id.MONTH == 8){
+                monthArray.August += all_data[i]._id.GEN_VAL_MO
+            }
+            else if (data[i]._id.MONTH == 9){
+                monthArray.September += data[i]._id.GEN_VAL_MO
+            }
+            else if (data[i]._id.MONTH == 10){
+                monthArray.October += data[i]._id.GEN_VAL_MO
+            }
+            else if (data[i]._id.MONTH == 11){
+                monthArray.November += data[i]._id.GEN_VAL_MO
+            }
+            else if (data[i]._id.MONTH == 12){
+                monthArray.December += data[i]._id.GEN_VAL_MO
+            }
+        }
+    }
+
+    const monthValues = Object.values(monthArray);
+    const monthKeys = Object.keys(monthArray);
+    xLabels.push(monthKeys);
+    yValues.push(monthValues)
+
+    console.log(yValues)
+};
+
+
+
+    const ctx = document.getElementById('chartId').getContext("2d")
+    new Chart (ctx, {
+      type: 'bar',
+      options: {
+        animation: false,
+        onHover: function(evt) {
+        }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            enabled: false
+          }
+        },
+      data: {
+        labels: [1,2,3,4,5,6,7,8,9,10,11,12],
+        datasets: 
+        [{
+            // should be xLabels
+            label: "Values ($) Millions",
+            // should be yValues
+            data: [100,200,300,400,500,600,700,800,900,1000,1100,1200],
+            backgroundColor: ['rgba(255,99,132,0.2)'],
+            borderColor: ['rgba(255,99,132,1)'],
+            borderWidth: 1
+        }]
+      }
+    });
+      
+    
+
+    //const myBarChart = Chart.Bar('chartId', {
+        //data: data,
+    //});
+    
+//};
+
 function createBarGraph(data, currentCommodity) {
     //prepare variables for bar graph
 
