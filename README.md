@@ -6,6 +6,10 @@
 The purpose of this project is to explore US trade relationship with foreign countries and identify the most consumed selected items. Due to the complexity of the dataset, we will only be gathering data from the year 2020 for the selected food items.
 
 ## Method
+Data Collation/Filteration
+Data Exploration
+Data Visualization
+
 
 ## Technology Used
 Flask,
@@ -20,13 +24,8 @@ Where do the selected food items originate from?
 What are the imported volumes and values of the selected food items?
 what are amounts of the selected items imported or consumed monthly?
 
-## Steps Involve
-Data collation/filteration,
-Data exploration,
-Data visualization,
-Writup/reports
-
 ## Limitations
+Huge Dataset, it took a longer than normal for the flask app to load.
 
 ## Instructions
 
