@@ -43,7 +43,7 @@ Huge Dataset, it took longer than normal for the flask app to load.
 ## Resources
 https://stackoverflow.com/questions/16586180/typeerror-objectid-is-not-json-serializable
 https://stackoverflow.com/questions/18008025/remove-duplicate-item-from-array-javascript
-https://plotly.com/javascript/reference/choropleth/
+https://plotly.com/javascript/reference/choropleth/ 
 https://plotly.com/javascript/reference/layout/
 https://plotly.com/javascript/pie-charts/
 https://getbootstrap.com/docs/5.3/getting-started/introduction/
