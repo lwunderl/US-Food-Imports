@@ -20,7 +20,7 @@
         <h1>2022 Interactive US Food Import Dashboard</h1>
         <p>Use the interactive charts below to explore the dataset</p>
       </div>
-        <div class="row">
+        <div class="row-select">
           <div class="col-xs-8 col-sm-4">
             <h5>Select Imported Food Item:</h5>
             <select id="selCommodity" onchange="onChanged(this.value)">
@@ -56,7 +56,7 @@
         <div id="choropleth"></div>
       </div>
       <div class="col-sm-6 col-md-4">
-        <div id="marker"></div>
+        <div id="marker" style="width: 100%; height: 425px"></div>
       </div>
     </div>
 
@@ -73,8 +73,7 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="./static/app.js"></script>
-  <!--<script src="./static/js/bonus.js"></script>-->
-  
+  <!--<script src="./static/js/bonus.js"></script>-->  
 </body>
 
 </html>
