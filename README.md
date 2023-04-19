@@ -19,13 +19,13 @@ HTML/CSS,
 JavaScript
 
 ## Questions Addressed
-What is the trade relationship between the US and other countries in the year 2020?
+What is the trade relationship between the US and other countries in the year 2022?
 Where do the selected food items originate from?
 What are the imported volumes and values of the selected food items?
-what are amounts of the selected items imported or consumed monthly?
+what amounts of the selected items are imported or consumed monthly?
 
 ## Limitations
-Huge Dataset, it took a longer than normal for the flask app to load.
+Huge Dataset, it took longer than normal for the flask app to load.
 
 ## Instructions
 <ol>
