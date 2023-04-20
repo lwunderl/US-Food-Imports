@@ -36,17 +36,6 @@ function infoPanel(data, currentMonth, currentCommodity) {
     panelInfo.text("COUNTRY OF ORIGIN: VALUE OF IMPORTS");
     for (let i = 0; i < data.length; i++) {
         if (data[i]._id.MONTH == currentMonth && data[i]._id.I_COMMODITY_SDESC == currentCommodity) {
-            /*EXAMPLE:
-            const price = 14340;
-
-            // Format the price above to USD using the locale, style, and currency.
-            let USDollar = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            });
-
-            console.log(`The formated version of ${price} is ${USDollar.format(price)}`);
-            // The formated version of 14340 is $14,340.00 */
             panelInfo.append("tr").text(`${data[i]._id.CTY_NAME}: ${data[i]._id.GEN_VAL_MO}`);}
     }
 }
@@ -61,7 +50,6 @@ function createChoropleth(data, currentMonth, currentCommodity) {
             choroplethNames.push(data[i]._id.CTY_NAME);
             choroplethValues.push(data[i]._id.GEN_VAL_MO);
         }
-        //console.log(choroplethNames);
     }
 
     let countryLocations = [{
@@ -97,120 +85,105 @@ function createChoropleth(data, currentMonth, currentCommodity) {
     Plotly.newPlot("choropleth", countryLocations, choroplethLayout, {responsive:true});
 }
 
-// Create pie chart and port map
+// Create pie chart
 function createPieChart(data, currentMonth, currentCommodity) {
-    
+
     //prepare pie chart data
     portValues = []
     portLabels = []
-    portLat = []
-    portLong = []
-    
-    let markers = []
     for (let i = 0; i < data.length; i++) {
         //optimize return and loading time. There's a better way, but I'm not sure how to yield a return
-
         if (data[i]._id.MONTH == currentMonth && data[i]._id.I_COMMODITY_SDESC == currentCommodity) {
             portLabels.push(data[i]._id.PORT_NAME);
             portValues.push(data[i].total_value);
-            portLat.push(data[i]._id.LATITUDE);
-            portLong.push(data[i]._id.LONGITUDE);
             }
-
-            //console.log(portLat)
-
-            markers.push(
-                L.circle([portLat,portLong], {
-                    color: "",
-                    fillColor: "red",
-                    fillOpacity: .75,
-                    // use general value as radius
-                    radius: 10000
-                }).bindPopup(
-                    `<h4>${portLabels}</h4>`
-                    )
-            )
-    }
-
-    console.log(markers)
-    
-
-    //lat long names are null
-    let markerLayer = L.layerGroup(markers);
-    //console.log(markerLayer)
-
-        //Need key:name value:latlong
-        //let monthArray = {"January":0,"February":0
-
-        //console.log(portValues,portLat,portLong);
-        //console.log(portValues);
-        //console.log(portLabels)
+        };
 
     let pieChart = [{
-        values: portLabels,//.slice(0,10),
-        labels: portLabels,//.slice(0,10),
+        values: portValues,
+        labels: portLabels,
         type: "pie"
       }];
       
     let pieLayout = {
-        title:`Top Ten Ports of Entry for<br>${currentCommodity}<br>in MONTH ${currentMonth}`,
+        title:`Ports of Entry for<br>${currentCommodity}<br>in MONTH ${currentMonth}`,
         height: 500,
         showlegend: false
       };
       
-    Plotly.newPlot("pie", pieChart, pieLayout, {responsive: true});
-    
+      Plotly.newPlot("pie", pieChart, pieLayout, {responsive: true});
+}
 
+//function to return color based on depth variable
+function getColor(d) {
+    return d > 50000000 ? "rgb(252, 1, 1)" :
+            d > 20000000 ? "rgb(252, 50, 1)" :
+            d > 10000000 ? "rgb(252, 75, 1)" :
+            d > 5000000 ? "rgb(252, 100, 1)" :
+            d > 1000000 ? "rgb(252, 150, 1)" :
+            "rgb(252, 200, 1)";
+}
 
-    // Creating the map object 
-    let myMap = L.map('marker', {
-        center: [39.73, -104.99],
-        zoom: 3,
-        layers: []
-        });
+//create port map
+function createMarkerChart(data, currentMonth, currentCommodity) {
+    myMap.remove()
+    //create layer for street map
+    let streetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
 
-    let streets = L.tileLayer('http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}').addTo(myMap); 
+    // create array variable to store circles
+    let portValues = [];
 
-    let osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(myMap);
+    //loop through dataFeatures and set variables for lat, lon, depth, and magnitude
+    for (let i = 0; i < data.length; i++) {
+        //create if statement variable to skip null
+        let portFeature = data[i]._id;
+        
+        //create variables for building circles
+        let portLat = portFeature.LATITUDE;
+        let portLon = portFeature.LONGITUDE;
+        let portName = portFeature.PORT_NAME;
+        let portValue = data[i].total_value;
 
-    let baseMaps = {
-    "WorldStreetMap": streets,
-    "OpenStreetMap": osm
-    };
+        //add to earthquakeEvents array with circle and pop-up information
+        if (portFeature.MONTH == currentMonth && portFeature.I_COMMODITY_SDESC == currentCommodity) {
+            if (portFeature){
+                portValues.push(
+                    L.circle([portLat, portLon], {
+                        color: "",
+                        fillColor: getColor(portValue),
+                        fillOpacity: .75,
+                        radius: 20000
+                    }).bindPopup(
+                        `<h4>${portName}</h4>
+                        <p>Value of Imported ${currentCommodity}: ${portValue}</p>`
+                        )
+                );
+            }
+        }
+    }
 
-    let overlayMaps = {
-    "Ports": markerLayer,
-    };
+    //turn port values array into a layer
+    ports = L.layerGroup(portValues);
 
-    L.control.layers(baseMaps,overlayMaps).addTo(myMap);
-
-    const popup = L.popup();
-
-    function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(myMap);
-    };
-    
-    myMap.on('click', onMapClick);
-
+    //create myMap variable
+    myMap = L.map("marker", {
+        center: [39.810492, -98.556061],
+        zoom: 4,
+        layers: [streetMap, ports]
+    });
 };
 
-let myChart = null; // initialize chart object to null
-
 // Chart JS
-// NEED TO UPDATE. DOESN'T PARSE THROUGH SELECTION
+
+// Create bar graph
 function createBarGraph(data, currentCommodity) {
     
-
     let monthArray = {"January":0,"February":0,"March":0,"April":0,"May":0,"June":0,"July":0,"August":0,"September":0,"October":0,"November":0,"December":0};
     
     for (let i = 0; i < data.length; i++) {
-        
+
         let monthNumber = data[i]._id.MONTH
         let totalValueMo = data[i]._id.GEN_VAL_MO
         let commodityName = data[i]._id.I_COMMODITY_SDESC
@@ -252,47 +225,30 @@ function createBarGraph(data, currentCommodity) {
             else if (monthNumber == 12){
                 monthArray.December += totalValueMo         
             }
-        //Data changes but chart does not
-        //console.log(monthArray)
         }
     }
 
-    console.log(monthArray)
+     // based on answer here: https://stackoverflow.com/questions/40056555/destroy-chart-js-bar-graph-to-redraw-other-graph-in-same-canvas
+    // JS - Destroy exiting Chart Instance to reuse <canvas> element
+    // <canvas> id
+    let chartStatus = Chart.getChart('bar'); 
+    if (chartStatus != undefined) {
+        chartStatus.destroy();
+    }
+
     let yValues = Object.values(monthArray)
     let xValues = Object.keys(monthArray)
 
-    const config = document.getElementById('chartId').getContext("2d");
-    myChart = new Chart (config, {
-        type: 'bar',
-        options: {
-            plugins: {
-                display: true,
-            }
-        },
-        data: {
-            labels: ["Jan", "Feb", "Mar"], //"Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
-            datasets: 
-            [{
-                label: "Total Value ($) Millions",
-                data: [1,2.3]
-            }]
-    }});
-
-    // Destroy the previous chart if it exists. This worked!
-    if (myChart) {
-        myChart.destroy(); 
-      }
-   
-    // Create graph
-    const path = document.getElementById('chartId').getContext("2d");
+    let path = document.getElementById('bar').getContext("2d");
     myChart = new Chart (path, {
         type: 'bar',
         options: {
+            animation: true,
             response: true,
             plugins: {
                 title: {
                     display: true,
-                    text: `Total USD ($) for Imported Food Item Over Time: ${currentCommodity}`,
+                    text: [`Total USD ($) from January to December for:`, `${currentCommodity}`],
                     padding: {
                         top: 10,
                         bottom: 30},
@@ -304,42 +260,45 @@ function createBarGraph(data, currentCommodity) {
             },
         },
         data: {
-            labels: xValues, //["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
+            labels: xValues,
             datasets: 
             [{
                 label: "Total Value ($) Millions",
                 data: yValues,
-                backgroundColor: ['rgba(255,99,132,0.2)'],
-                borderColor: ['rgba(255,99,132,1)'],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [                    
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+            ],
                 borderWidth: 1,
                 parsing: {
                     xAxisKey: xValues,
-                    // Example: financials.cost
                     yAxisKey: yValues,
                 }
             }]
         }
+
     })
 
-    //From Chart JS docs
-    function removeData(myChart){
-        myChart.data.labels.pop();
-        myChart.data.datasets.forEach((dataset) => {
-            dataset.data.pop(); 
-        });
-        myChart.update();
-    }
-    console.log(myChart)
+    myChart.update()
     
-    /*EXAMPLE to update chart
-    https://www.youtube.com/watch?v=cPsyh_KuYNA
-    function onChanged(select){
-        console.log(select.onchange)
-        myChart.data.dataset[1].parsing.yAxisKey = `${select.onchange}`;
-        myChart.update();
-    } */
-
 };
+
+// initialize chart.js object for bar chart
+let myChart = []
 
 //look at data
 d3.json(commodityUrl).then(function (data){
@@ -351,8 +310,10 @@ d3.json(commodityUrl).then(function (data){
 
 d3.json(portUrl).then(function (data){
     createPieChart(data, 1, "APPLES, FRESH")
-    //createMarkerChart(data, 1, "APPLES,FRESH")
+    createMarkerChart(data, 1, "APPLES, FRESH")
 });
+
+myMap = L.map("marker");
 
 function onChanged() {
     let currentCommodity = d3.select("#selCommodity option:checked").text();
@@ -361,15 +322,9 @@ function onChanged() {
         infoPanel(data, currentMonth, currentCommodity);
         createChoropleth(data, currentMonth, currentCommodity);
         createBarGraph(data, currentCommodity);
-            //myChart.data.datasets.parsing.yAxisKey = `Object.values $(monthArray)`;
-            //myChart.update();
     });          
     d3.json(portUrl).then(function (data){
         createPieChart(data, currentMonth, currentCommodity);
-        //createMarkerChart(data, currentMonth, currentCommodity)
+        createMarkerChart(data, currentMonth, currentCommodity);
     });
 };
-
-// d3.json(countryUrl).then(function (data){
-//     console.log(data);
-//});
