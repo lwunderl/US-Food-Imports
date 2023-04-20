@@ -99,7 +99,7 @@ function createChoropleth(data, currentMonth, currentCommodity) {
 
 // Create pie chart and port map
 function createPieChart(data, currentMonth, currentCommodity) {
-
+    let markers = []
     //prepare pie chart data
     portValues = []
     portLabels = []
@@ -113,12 +113,27 @@ function createPieChart(data, currentMonth, currentCommodity) {
             portLat.push(data[i]._id.LATITUDE);
             portLong.push(data[i]._id.LONGITUDE);
             }
-        };
-        //console.log(portLat);
+
+            markers.push(
+                L.circle([portLat,portLong], {
+                    color: "",
+                    fillColor: "red",
+                    fillOpacity: .75,
+                    // use general value as radius
+                    radius: 10000
+                }).bindPopup(
+                    `<h4>${portLabels}</h4>`
+                )
+            )
+        }        
+        
+        //console.log(portLat,portLong);
+        //console.log(portValues);
+        //console.log(portLabels)
 
     let pieChart = [{
-        values: portValues.slice(0,10),
-        labels: portLabels.slice(0,10),
+        values: portValues,//.slice(0,10),
+        labels: portLabels,//.slice(0,10),
         type: "pie"
       }];
       
@@ -130,59 +145,49 @@ function createPieChart(data, currentMonth, currentCommodity) {
       
       Plotly.newPlot("pie", pieChart, pieLayout, {responsive: true});
 
-      // How to display each individual lat/long and corresponding label?
-      let sample_one = L.marker([portLat[0],portLong[0]]).bindPopup(`${portLabels[0]}`);
-      //console.log(sample_one);
-  
+      let markerLayer = L.layerGroup(markers);
+    console.log(markerLayer)
+
     // Creating the map object 
     let myMap = L.map('marker', {
         center: [39.73, -104.99],
         zoom: 3,
         layers: []
-    });
+        });
 
-    //adding the tile layer
     let streets = L.tileLayer('http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}').addTo(myMap); 
 
     let osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(myMap);
 
     let baseMaps = {
-        "WorldStreetMap": streets,
-        "OpenStreetMap": osm
+    "WorldStreetMap": streets,
+    "OpenStreetMap": osm
     };
 
     let overlayMaps = {
-        "Ports": sample_one,
-        // Change data later
-        //"Choropleth": sample_one
+    "Ports": markerLayer,
     };
 
-    let layerControl = L.control.layers(baseMaps,overlayMaps).addTo(myMap);
+    L.control.layers(baseMaps,overlayMaps).addTo(myMap);
 
     const popup = L.popup();
 
     function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
-            .openOn(myMap);
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(myMap);
     };
-        
+    
     myMap.on('click', onMapClick);
+
 };
 
 // Chart JS
 // NEED TO UPDATE. DOESN'T PARSE THROUGH SELECTION
-
-// Create for Chart for first option (data,1,"APPLES, FRESH")
-// Display the default plot     
-
-// On change to the DOM, call bar graph function
-//d3.selectAll("#selCommodity").on("change", createBarGraph);
-
 function createBarGraph(data, currentCommodity) {
     
     let monthArray = {"January":0,"February":0,"March":0,"April":0,"May":0,"June":0,"July":0,"August":0,"September":0,"October":0,"November":0,"December":0};
@@ -276,143 +281,76 @@ function createBarGraph(data, currentCommodity) {
 };
 
 /*
-function createMarkerChart(data, currentMonth, currentCommodity) {
-
-    //prepare variables
-    portNames = []
-    portTotals = []
-    portLat = []
-    portLong = []
+    // Combine map data
+    let sample_one = L.marker([portLat[0],portLong[0]]).bindPopup(`This is ${portNames[0]}`); 
+*/
+/*
+function createMarkerChart (data, currentMonth, currentCommodity) {
+    let markers = [];
 
     for (let i = 0; i < data.length; i++) {
-
         let monthNumber = data[i]._id.MONTH
         let commodityName = data[i]._id.I_COMMODITY_SDESC
         //console.log(commodityName);
-
         //optimize return and loading time. There's a better way, but I'm not sure how to yield a return
-        if (monthNumber == currentMonth && commodityName == currentCommodity) {
-            portNames.push(data[i]._id.PORT_NAME);
-            portTotals.push(data[i].total_value);
-            //portLat.push(data[i]._id.LATITUDE);
-            //portLong.push(data[i]._id.LONGITUDE);
-            }
-        };
-        
-        console.log(portNames)
-        console.log(portTotals)        
-        //console.log(portLat);
-        //console.log(portLong);
+        if (monthNumber == currentMonth && commodityName == currentCommodity) { 
+            portNames = data[i]._id.PORT_NAME;
+            portLat = data[i]._id.LATITUDE;
+            portLong = data[i]._id.LONGITUDE;
 
-    // Combine map data
-    let sample_one = L.marker([portLat[0],portLong[0]]).bindPopup(`This is ${portNames[0]}`); 
+            markers.push(
+                L.circle([portLat,portLong], {
+                    color: "",
+                    fillColor: "red",
+                    fillOpacity: .75,
+                    // use general value as radius
+                    radius: 10000
+                }).bindPopup(
+                    `<h4>${portNames}</h4>`
+                )
+            )
+        }        
+        
+    let markerLayer = L.layerGroup(markers);
+    console.log(markerLayer)
 
     // Creating the map object 
     let myMap = L.map('marker', {
         center: [39.73, -104.99],
         zoom: 3,
         layers: []
-    });
-
-    //adding the tile layer
-    let osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(myMap);
-
-    // EXAMPLE:
-    let alexandria = L.marker([44.336127, -75.917931]).bindPopup("Alexandria, NY");
-    //let anchorage = L.marker([61.2163129, -149.894852]).bindPopup('Anchorage,AL');
-    //let baltimore = L.marker([39.2908816, -76.610759]).bindPopup('Baltimore,MD');
-    //groupLatLong = L.layerGroup(alexandria,anchorage,baltimore)
+        });
 
     let streets = L.tileLayer('http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}').addTo(myMap); 
 
+    let osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(myMap);
+
     let baseMaps = {
-        //"OpenStreetMap": osm,
-        "WorldStreetMap": streets
+    "WorldStreetMap": streets,
+    "OpenStreetMap": osm
     };
 
     let overlayMaps = {
-        "Ports": alexandria,
-        // Change data later
-        "Choropleth": alexandria
+    "Ports": markerLayer,
     };
 
-    let layerControl = L.control.layers(baseMaps, overlayMaps).addTo(myMap);
-
-    /*let chorolayer;
-
-    // Load the data and get the data w/ d3
-    d3.json(portUrl).then(function(data) {
-
-        // Create a new choropleth layer
-        chorolayer = L.tileLayer(data, {
-
-            // Define which property in the features to use
-            _id: "GEN_VOL_MO",
-
-            // Set the color scale
-            scale: ["#ffffb2", "#b10026"],
-
-            // The number of breaks in the step range
-            steps: 10,
-
-            // q for quartile, e for equidistant, k for k-means
-            mode: "q",
-            style: {
-                // Border color
-                color: "#fff",
-                weight: 1,
-                fillOpacity: 0.8
-            },
-
-            // Binding a popup to each layer
-            onEachFeature: function(feature,layer) {
-                layer.bindPopup("<strong" + feature.properties.CTY_NAME + "</strong><br /><br />$ GEN_VOL_MO: " + feature.properties.GEN_VAL_MO);
-            }
-        }).addTo(myMap);
-    });
-
-    // Set up the choropleth legend
-    let legend = L.control({ position: "bottomright" });
-    legend.onAdd = function() {
-        let div = L.DomUtil.create("div", "info legend");
-        let limits = chorolayer.options.limits;
-        let colors = chorolayer.options.colors;
-        let labels = [];
-
-        // Add the minimum and maximum
-        let legendInfo = "<h3>Percent National Obesity By State in 2015<br</h3>" +
-        "<div class=\"labels\">" +
-          "<div class=\"min\">" + limits[0] + "</div>" +
-          "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
-        "</div>";
-
-        div.innerHTML = legendInfo;
-
-        limits.forEach(function(limit,index) {
-            labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
-        });
-
-        div.innerHTML += "<ul>" + labels.join("") + "</ul>";
-        return div;
-    };
-
-    // Adding the choropleth legend to the map
-    legend.addTo(myMap);
+    L.control.layers(baseMaps,overlayMaps).addTo(myMap);
 
     const popup = L.popup();
 
     function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
-            .openOn(myMap);
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(myMap);
     };
-        
+    
     myMap.on('click', onMapClick);
-};
+    };
+}
 */
 
 //look at data
@@ -425,7 +363,7 @@ d3.json(commodityUrl).then(function (data){
 
 d3.json(portUrl).then(function (data){
     createPieChart(data, 1, "APPLES, FRESH")
-    //createMarkerChart(data, 1, "APPLES,FRESH")
+    createMarkerChart(data, 1, "APPLES,FRESH")
 });
 
 function onChanged() {
@@ -440,7 +378,7 @@ function onChanged() {
     });          
     d3.json(portUrl).then(function (data){
         createPieChart(data, currentMonth, currentCommodity);
-        //createMarkerChart(data, currentMonth, currentCommodity)
+        createMarkerChart(data, currentMonth, currentCommodity)
     });
 };
 
