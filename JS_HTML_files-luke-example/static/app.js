@@ -99,20 +99,26 @@ function createChoropleth(data, currentMonth, currentCommodity) {
 
 // Create pie chart and port map
 function createPieChart(data, currentMonth, currentCommodity) {
-    let markers = []
+    
     //prepare pie chart data
     portValues = []
     portLabels = []
     portLat = []
     portLong = []
+    
+    let markers = []
     for (let i = 0; i < data.length; i++) {
         //optimize return and loading time. There's a better way, but I'm not sure how to yield a return
+        let markers = []
+
         if (data[i]._id.MONTH == currentMonth && data[i]._id.I_COMMODITY_SDESC == currentCommodity) {
             portLabels.push(data[i]._id.PORT_NAME);
             portValues.push(data[i].total_value);
             portLat.push(data[i]._id.LATITUDE);
             portLong.push(data[i]._id.LONGITUDE);
             }
+
+            //console.log(portLat)
 
             markers.push(
                 L.circle([portLat,portLong], {
@@ -123,16 +129,26 @@ function createPieChart(data, currentMonth, currentCommodity) {
                     radius: 10000
                 }).bindPopup(
                     `<h4>${portLabels}</h4>`
-                )
+                    )
             )
-        }        
-        
-        //console.log(portLat,portLong);
+    }
+
+    console.log(markers)
+    
+
+    //lat long names are null
+    let markerLayer = L.layerGroup(markers);
+    //console.log(markerLayer)
+
+        //Need key:name value:latlong
+        //let monthArray = {"January":0,"February":0
+
+        //console.log(portValues,portLat,portLong);
         //console.log(portValues);
         //console.log(portLabels)
 
     let pieChart = [{
-        values: portValues,//.slice(0,10),
+        values: portLabels,//.slice(0,10),
         labels: portLabels,//.slice(0,10),
         type: "pie"
       }];
@@ -143,10 +159,9 @@ function createPieChart(data, currentMonth, currentCommodity) {
         showlegend: false
       };
       
-      Plotly.newPlot("pie", pieChart, pieLayout, {responsive: true});
+    Plotly.newPlot("pie", pieChart, pieLayout, {responsive: true});
+    
 
-      let markerLayer = L.layerGroup(markers);
-    console.log(markerLayer)
 
     // Creating the map object 
     let myMap = L.map('marker', {
@@ -186,10 +201,13 @@ function createPieChart(data, currentMonth, currentCommodity) {
 
 };
 
+let myChart = null; // initialize chart object to null
+
 // Chart JS
 // NEED TO UPDATE. DOESN'T PARSE THROUGH SELECTION
 function createBarGraph(data, currentCommodity) {
     
+
     let monthArray = {"January":0,"February":0,"March":0,"April":0,"May":0,"June":0,"July":0,"August":0,"September":0,"October":0,"November":0,"December":0};
     
     for (let i = 0; i < data.length; i++) {
@@ -239,11 +257,13 @@ function createBarGraph(data, currentCommodity) {
         //console.log(monthArray)
         }
     }
+
+    console.log(monthArray)
     let yValues = Object.values(monthArray)
     let xValues = Object.keys(monthArray)
 
     const config = document.getElementById('chartId').getContext("2d");
-    let myChart = new Chart (config, {
+    myChart = new Chart (config, {
         type: 'bar',
         options: {
             plugins: {
@@ -259,8 +279,11 @@ function createBarGraph(data, currentCommodity) {
             }]
     }});
 
-    myChart.destroy()
-
+    // Destroy the previous chart if it exists. This worked!
+    if (myChart) {
+        myChart.destroy(); 
+      }
+   
     // Create graph
     const path = document.getElementById('chartId').getContext("2d");
     myChart = new Chart (path, {
@@ -292,94 +315,32 @@ function createBarGraph(data, currentCommodity) {
                 borderWidth: 1,
                 parsing: {
                     xAxisKey: xValues,
+                    // Example: financials.cost
                     yAxisKey: yValues,
                 }
             }]
         }
     })
-    //EXAMPLE to update chart
-    // https://www.youtube.com/watch?v=cPsyh_KuYNA
-    function onChanged(option){
-        console.log(option.value);
-        myChart.data.dataset[0].parsing.yAxisKey = `financial${option.value}`;
-        myChart.update();
-};
-};
 
-
-
-/*
-    // Combine map data
-    let sample_one = L.marker([portLat[0],portLong[0]]).bindPopup(`This is ${portNames[0]}`); 
-*/
-/*
-function createMarkerChart (data, currentMonth, currentCommodity) {
-    let markers = [];
-
-    for (let i = 0; i < data.length; i++) {
-        let monthNumber = data[i]._id.MONTH
-        let commodityName = data[i]._id.I_COMMODITY_SDESC
-        //console.log(commodityName);
-        //optimize return and loading time. There's a better way, but I'm not sure how to yield a return
-        if (monthNumber == currentMonth && commodityName == currentCommodity) { 
-            portNames = data[i]._id.PORT_NAME;
-            portLat = data[i]._id.LATITUDE;
-            portLong = data[i]._id.LONGITUDE;
-
-            markers.push(
-                L.circle([portLat,portLong], {
-                    color: "",
-                    fillColor: "red",
-                    fillOpacity: .75,
-                    // use general value as radius
-                    radius: 10000
-                }).bindPopup(
-                    `<h4>${portNames}</h4>`
-                )
-            )
-        }        
-        
-    let markerLayer = L.layerGroup(markers);
-    console.log(markerLayer)
-
-    // Creating the map object 
-    let myMap = L.map('marker', {
-        center: [39.73, -104.99],
-        zoom: 3,
-        layers: []
+    //From Chart JS docs
+    function removeData(myChart){
+        myChart.data.labels.pop();
+        myChart.data.datasets.forEach((dataset) => {
+            dataset.data.pop(); 
         });
-
-    let streets = L.tileLayer('http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}').addTo(myMap); 
-
-    let osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(myMap);
-
-    let baseMaps = {
-    "WorldStreetMap": streets,
-    "OpenStreetMap": osm
-    };
-
-    let overlayMaps = {
-    "Ports": markerLayer,
-    };
-
-    L.control.layers(baseMaps,overlayMaps).addTo(myMap);
-
-    const popup = L.popup();
-
-    function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(myMap);
-    };
+        myChart.update();
+    }
+    console.log(myChart)
     
-    myMap.on('click', onMapClick);
-    };
-}
-*/
+    /*EXAMPLE to update chart
+    https://www.youtube.com/watch?v=cPsyh_KuYNA
+    function onChanged(select){
+        console.log(select.onchange)
+        myChart.data.dataset[1].parsing.yAxisKey = `${select.onchange}`;
+        myChart.update();
+    } */
+
+};
 
 //look at data
 d3.json(commodityUrl).then(function (data){
@@ -391,7 +352,7 @@ d3.json(commodityUrl).then(function (data){
 
 d3.json(portUrl).then(function (data){
     createPieChart(data, 1, "APPLES, FRESH")
-    createMarkerChart(data, 1, "APPLES,FRESH")
+    //createMarkerChart(data, 1, "APPLES,FRESH")
 });
 
 function onChanged() {
@@ -406,7 +367,7 @@ function onChanged() {
     });          
     d3.json(portUrl).then(function (data){
         createPieChart(data, currentMonth, currentCommodity);
-        createMarkerChart(data, currentMonth, currentCommodity)
+        //createMarkerChart(data, currentMonth, currentCommodity)
     });
 };
 
