@@ -90,7 +90,6 @@ function createPieChart(data, currentMonth, currentCommodity) {
 };
 
 
-
 // Create map
 function createMapChart(data, currentMonth, currentCommodity) {
     // Creating the map object 
@@ -141,8 +140,6 @@ function createMapChart(data, currentMonth, currentCommodity) {
 
         
         if (locationFeature) {
-            // THIS DOES NOT WORK EITHER!
-            //if (monthNumber == currentMonth && commodityName == currentCommodity) {
                 markersEvents.push(
                     L.circle([portLat,portLon], {
                         color: "red",
@@ -155,25 +152,7 @@ function createMapChart(data, currentMonth, currentCommodity) {
                 )
             //}
         }
-        //console.log(locationFeature)
 
-        /* THIS WORKS!
-        //if (monthNumber == currentMonth && commodityName == currentCommodity) {
-            if (locationFeature) {
-                markersEvents.push(
-                    L.circle([portLat,portLon], {
-                        color: "red",
-                        fillColor: "red",
-                        fillOpacity: .75,
-                        radius: 10000 
-                    }).bindPopup(
-                        `<h4>${portName}</h4>`
-                    )
-                );
-            }
-        
-        } */
-        //console.log(portLabels, portLat, portLon)
     }
 
     let markers = L.layerGroup(markersEvents);
@@ -185,9 +164,7 @@ function createMapChart(data, currentMonth, currentCommodity) {
     L.control.layers(baseMaps,overlayMaps).addTo(myMap);
 };
 
-
-// initialize chart object to null
-let myChart = null;
+let myChart = []
 
 // Create bar graph
 function createBarGraph(data, currentCommodity) {
@@ -240,6 +217,14 @@ function createBarGraph(data, currentCommodity) {
         }
     }
 
+     // based on answer here: https://stackoverflow.com/questions/40056555/destroy-chart-js-bar-graph-to-redraw-other-graph-in-same-canvas
+    // JS - Destroy exiting Chart Instance to reuse <canvas> element
+    // <canvas> id
+    let chartStatus = Chart.getChart('bar'); 
+    if (chartStatus != undefined) {
+        chartStatus.destroy();
+    }
+
     let yValues = Object.values(monthArray)
     let xValues = Object.keys(monthArray)
 
@@ -252,7 +237,7 @@ function createBarGraph(data, currentCommodity) {
             plugins: {
                 title: {
                     display: true,
-                    text: `Total USD ($) for Imported Food Item Over Time: ${currentCommodity}`,
+                    text: [`Total USD ($) from January to December for:`, `${currentCommodity}`],
                     padding: {
                         top: 10,
                         bottom: 30},
@@ -264,7 +249,7 @@ function createBarGraph(data, currentCommodity) {
             },
         },
         data: {
-            labels: xValues, //["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
+            labels: xValues,
             datasets: 
             [{
                 label: "Total Value ($) Millions",
@@ -290,7 +275,6 @@ function createBarGraph(data, currentCommodity) {
                 borderWidth: 1,
                 parsing: {
                     xAxisKey: xValues,
-                    // Example: financials.cost
                     yAxisKey: yValues,
                 }
             }]
@@ -298,11 +282,10 @@ function createBarGraph(data, currentCommodity) {
 
     })
 
-    console.log(myChart)
-
     myChart.update()
     
 };
+
 
 //look at first set of data
 d3.json(commodityUrl).then(function (data){
@@ -315,6 +298,7 @@ d3.json(portUrl).then(function (data){
     createPieChart(data, 1, "APPLES, FRESH"),
     createMapChart(data, "APPLES, FRESH")
 });
+
 
 function onChanged() {
     let currentCommodity = d3.select("#selCommodity option:checked").text();

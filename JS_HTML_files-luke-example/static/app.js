@@ -109,7 +109,6 @@ function createPieChart(data, currentMonth, currentCommodity) {
     let markers = []
     for (let i = 0; i < data.length; i++) {
         //optimize return and loading time. There's a better way, but I'm not sure how to yield a return
-        let markers = []
 
         if (data[i]._id.MONTH == currentMonth && data[i]._id.I_COMMODITY_SDESC == currentCommodity) {
             portLabels.push(data[i]._id.PORT_NAME);
