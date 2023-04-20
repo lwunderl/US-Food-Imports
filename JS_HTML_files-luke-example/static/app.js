@@ -297,15 +297,16 @@ function createBarGraph(data, currentCommodity) {
             }]
         }
     })
+    //EXAMPLE to update chart
+    // https://www.youtube.com/watch?v=cPsyh_KuYNA
+    function onChanged(option){
+        console.log(option.value);
+        myChart.data.dataset[0].parsing.yAxisKey = `financial${option.value}`;
+        myChart.update();
+};
 };
 
-//EXAMPLE to update chart
-// https://www.youtube.com/watch?v=cPsyh_KuYNA
-function updateChart(option){
-    console.log(option.value);
-    myChart.data.dataset[0].parsing.yAxisKey = `financial${option.value}`;
-    myChart.update();
-}
+
 
 /*
     // Combine map data
