@@ -16,7 +16,9 @@
         crossorigin="anonymous">
 
     <!-- Use external CSS file for additional page formatting (style.css)-->
-
+    <link
+        rel="stylesheet"
+        href=".\style.css">
     <!-- LOOK HERE: Place potential Leaflet/JS info here -->
 
 </head>
@@ -27,12 +29,10 @@
     <!-- Title and Title Image -->
     <div class = "container-fluid">
         <div class="row">
-            <div class="col-sm-4 d-flex flex-column align-content-center bg-dark">
+            <div class="col-sm-12 d-flex justify-content-center">
                 <!-- LOOK HERE: replace below with image location for final project -->
                 <img class="header-img" src="https://specials-images.forbesimg.com/imageserve/5d48970750409900088010fc/Next-Trucking/0x0.gif?fit=scale" alt="Port in Action"/>
-            </div>
-            <div class=" col-sm-8 d-flex flex-column align-content-center text-center bg-dark">
-                <h1 style="color:blanchedalmond">U.S. Food Imports - An Exploratory Analysis</h1>
+                <h1 class="header-text bg-dark rounded" style="padding: 20px">U.S. Food Imports - An Exploratory Analysis</h1>
             </div>
         </div>
 
@@ -50,14 +50,14 @@
 
         <!-- Dropdown title and dropdown section -->
         <div class = "row col-sm-12">
-            <div class="card">
+            <div class="card bg-transparent" style="padding: 0px 5px 20px 5px">
                 <h5 class="card-body">Select from the following options to see specific items and import seasonality:</h5>
                 <h7 class="card-text">Select Food Item</h7>
                     <select id="selCommodity" onchange="optionChanged(this.value)">
                     </select>
                 <h7 class="card-text">Select Month</h7>
                     <select id="selMonth" onchange="optionChanged(this.value)">
-                    </select><br>
+                    </select>
             </div>
         </div>
 

@@ -3,13 +3,14 @@ body {
     color: white;
 }
 
+
 .header-img {
     position: relative;
     text-align: center;
-    width: 1600px;
+    width: 1200px;
 }
 
-.comment-header {
+/* .comment-header {
     margin-left: 140px;
     margin-right: 100px;
 }
@@ -25,7 +26,7 @@ body {
 
 .dropdown {
     margin-left: 160px;
-}
+} */
 
 .header-text {
     font-size: 35px;
