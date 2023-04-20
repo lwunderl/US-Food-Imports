@@ -3,7 +3,7 @@
 ## Drawing Conclusions: Knowing the most consumed/imported selected food items along with their country of origin.
 
 ## Introduction/Objective
-The purpose of this project is to explore US trade relationship with foreign countries and identify the most consumed selected items. Due to the complexity of the dataset, we will only be gathering data from the year 2020 for the selected food items.
+The purpose of this project is to explore US trade relationship with foreign countries and identify the most consumed selected items. Due to the complexity of the dataset, we will only be gathering data from the year 2022 for the selected food items.
 
 ## Method
 Data Collation/Filteration, 
@@ -19,10 +19,10 @@ HTML/CSS,
 JavaScript
 
 ## Questions Addressed
-What is the trade relationship between the US and other countries in the year 2022?
+What are the trade relationship between the US and other countries?
 Where do the selected food items originate from?
-What are the imported volumes and values of the selected food items?
-what amounts of the selected items are imported or consumed monthly?
+What are the imported values(USD) of the selected food items?
+which months(s) are the selected food items imported the most?
 
 ## Limitations
 Huge Dataset, it took longer than normal for the flask app to load.
