@@ -242,6 +242,25 @@ function createBarGraph(data, currentCommodity) {
     let yValues = Object.values(monthArray)
     let xValues = Object.keys(monthArray)
 
+    const config = document.getElementById('chartId').getContext("2d");
+    let myChart = new Chart (config, {
+        type: 'bar',
+        options: {
+            plugins: {
+                display: true,
+            }
+        },
+        data: {
+            labels: ["Jan", "Feb", "Mar"], //"Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
+            datasets: 
+            [{
+                label: "Total Value ($) Millions",
+                data: [1,2.3]
+            }]
+    }});
+
+    myChart.destroy()
+
     // Create graph
     const path = document.getElementById('chartId').getContext("2d");
     myChart = new Chart (path, {
@@ -279,6 +298,14 @@ function createBarGraph(data, currentCommodity) {
         }
     })
 };
+
+//EXAMPLE to update chart
+// https://www.youtube.com/watch?v=cPsyh_KuYNA
+function updateChart(option){
+    console.log(option.value);
+    myChart.data.dataset[0].parsing.yAxisKey = `financial${option.value}`;
+    myChart.update();
+}
 
 /*
     // Combine map data
