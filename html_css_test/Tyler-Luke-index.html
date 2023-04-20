@@ -18,8 +18,7 @@
     <!-- Use external CSS file for additional page formatting (style.css)-->
     <link
         rel="stylesheet"
-        href="C:\Users\Tyler\Desktop\US-Food-Imports\html_css_test\style.css">
-
+        href=".\style.css">
     <!-- LOOK HERE: Place potential Leaflet/JS info here -->
 
 </head>
@@ -30,21 +29,18 @@
     <!-- Title and Title Image -->
     <div class = "container-fluid">
         <div class="row">
-            <div class="col-sm d-flex justify-content-center align-items-center">
+            <div class="col-sm-12 d-flex justify-content-center">
                 <!-- LOOK HERE: replace below with image location for final project -->
-                <img class="header-img" src="C:\Users\Tyler\Desktop\US-Food-Imports\html_css_test\images\header_img.gif" alt="Port in Action"/>
-                <div class="header-text border border-dark bg-dark rounded">U.S. Food Imports - An Exploratory Analysis</div>
+                <img class="header-img" src="https://specials-images.forbesimg.com/imageserve/5d48970750409900088010fc/Next-Trucking/0x0.gif?fit=scale" alt="Port in Action"/>
+                <h1 class="header-text bg-dark rounded" style="padding: 20px">U.S. Food Imports - An Exploratory Analysis</h1>
             </div>
         </div>
 
-        <br>
-        <br>
-
         <!-- Key Findings section -->
         <div class="row">
-            <div class="col-sm">
+            <div class="col-sm-12">
                 <h4 class = "comment-header">Key Findings</h4>
-                    <ul class = "comments text-wrap">
+                    <ul>
                         <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed egestas massa, ut suscipit quam. Nulla et mauris ac libero semper laoreet. Pellentesque at dignissim tortor. Suspendisse vitae sapien eu tellus mollis ornare. Morbi posuere eget ante et accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.</li>
                         <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed egestas massa, ut suscipit quam. Nulla et mauris ac libero semper laoreet. Pellentesque at dignissim tortor. Suspendisse vitae sapien eu tellus mollis ornare. Morbi posuere eget ante et accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.</li>
                         <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed egestas massa, ut suscipit quam. Nulla et mauris ac libero semper laoreet. Pellentesque at dignissim tortor. Suspendisse vitae sapien eu tellus mollis ornare. Morbi posuere eget ante et accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.</li>
@@ -52,62 +48,49 @@
             </div>
         </div>
 
-        <br>
-
         <!-- Dropdown title and dropdown section -->
-        <div class = "row">
-            <div class="col-sm">
-                <h5 class="dropdown-title text-wrap">Select from the following options to see specific items and import seasonality:</h5>
-                <div class="row">
-                    <h7 class="dropdown">Select Food Item</h7>
-                    <select id="selCommodity" onchange="optionChanged(this.value)"></select>
-                </div>
-                <br>
-                <div class="row">
-                    <h7 class="dropdown">Select Month</h7>
-                    <select id="selMonth" onchange="optionChanged(this.value)"></select>
-                </div>
+        <div class = "row col-sm-12">
+            <div class="card bg-transparent" style="padding: 0px 5px 20px 5px">
+                <h5 class="card-body">Select from the following options to see specific items and import seasonality:</h5>
+                <h7 class="card-text">Select Food Item</h7>
+                    <select id="selCommodity" onchange="optionChanged(this.value)">
+                    </select>
+                <h7 class="card-text">Select Month</h7>
+                    <select id="selMonth" onchange="optionChanged(this.value)">
+                    </select>
             </div>
         </div>
-
-    <br>
-    <br>
-    <br>
 
     <!-- Pie Chart and Choropleth map row -->
 
         <div class="row">
-            <div class="col-6 d-flex justify-content-center">
+            <div class="col-md-6 d-flex flex-column align-content-center">
                 <!-- LOOK HERE: replace below with <script type="text/javascript" src=file_name.js></script> -->
                 <!-- may need to format in style.css -->
-                <img src="C:\Users\Tyler\Desktop\US-Food-Imports\html_css_test\images\pie_chart_img.png" alt="Pie Chart"/>
+                <img src=".\images\pie_chart_img.png" alt="Pie Chart"/>
             </div>
-            <div class="col-6 d-flex justify-content-center">
+            <div class="col-md-6 d-flex align-content-center">
                 <!-- LOOK HERE: replace below with <script type="text/javascript" src=file_name.js></script> -->
                 <!-- may need to format in style.css -->
-                <img src="C:\Users\Tyler\Desktop\US-Food-Imports\html_css_test\images\choropleth_map_img.png" alt="Choropleth Map" />
+                <img src=".\images\choropleth_map_img.png" alt="Choropleth Map" />
             </div>
         </div>
 
-    <br>
-    <br>
-    <br>
-
     <!-- Horizontal bar chart analysis -->
         <div class="row">
-            <div class="col-6">
-            <h4 class = "comment-header">*Title for Bar Chart Analysis*</h4>
-                <ul class = "comments text-wrap">
+            <div class="col-md-6">
+            <h4 class ="comment-header">*Title for Bar Chart Analysis*</h4>
+                <ul>
                     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed egestas massa, ut suscipit quam. Nulla et mauris ac libero semper laoreet. Pellentesque at dignissim tortor. Suspendisse vitae sapien eu tellus mollis ornare. Morbi posuere eget ante et accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.</li>
                     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed egestas massa, ut suscipit quam. Nulla et mauris ac libero semper laoreet. Pellentesque at dignissim tortor. Suspendisse vitae sapien eu tellus mollis ornare. Morbi posuere eget ante et accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.</li>
                     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed egestas massa, ut suscipit quam. Nulla et mauris ac libero semper laoreet. Pellentesque at dignissim tortor. Suspendisse vitae sapien eu tellus mollis ornare. Morbi posuere eget ante et accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.</li>
                 </ul>
             </div>
-            <div class="col-5 d-flex justify-content-center">
+            <div class="col-md-6 d-flex align-content-center">
                 <!-- LOOK HERE: replace below with <script type="text/javascript" src=file_name.js></script> -->
                 <!-- <div id = "bar" for any plotly or chart.js -->
                 <!-- may need to format in style.css -->
-                <img src="C:\Users\Tyler\Desktop\US-Food-Imports\html_css_test\images\bar_chart_img.png" alt="Bar Chart" />
+                <img src=".\images\bar_chart_img.png" alt="Bar Chart" />
             </div>
         </div>
     </div>
@@ -115,7 +98,7 @@
 <!-- javascript and plotly scripts -->
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script src="./static/app.js"></script>
+<!--<script src="./static/app.js"></script>-->
 
 </body>
 </html>
