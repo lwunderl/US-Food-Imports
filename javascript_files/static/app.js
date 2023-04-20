@@ -107,7 +107,6 @@ function createPieChart(data, currentMonth, currentCommodity) {
       
     let pieLayout = {
         title:`Ports of Entry for<br>${currentCommodity}<br>in MONTH ${currentMonth}`,
-        height: 500,
         showlegend: false
       };
       
@@ -244,8 +243,7 @@ function createBarGraph(data, currentCommodity) {
         type: 'bar',
         options: {
             animation: true,
-            responsive: true,
-            maintainAspectRatio: true,
+            response: true,
             plugins: {
                 title: {
                     display: true,

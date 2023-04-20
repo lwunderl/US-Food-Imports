@@ -13,12 +13,16 @@
         rel="stylesheet" 
         href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
-        crossorigin="anonymous">
+        crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" 
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""/>
 
     <!-- Use external CSS file for additional page formatting (style.css)-->
     <link
         rel="stylesheet"
-        href=".\style.css">
+        href=".\style.css"/>
     <!-- LOOK HERE: Place potential Leaflet/JS info here -->
 
 </head>
@@ -60,17 +64,17 @@
                     </select>
             </div>
         </div>
+        
         <div class="row">
-            <div class="col-md-5">
-                <div id="info-panel"></div>
-            </div> 
-        </div>
-        <div class="row">
-            <div class="col-md-12 chart-container" style="position: relative; height:40vh; width:80vw">
+            <div class="col-md-12 chart-container" style="position: relative; height:60vh; width:80vw">
                 <canvas id="bar"></canvas>
             </div>
         </div>
+
         <div class="row">
+            <div class="col-md-2">
+                <div id="info-panel"></div>
+            </div> 
             <div class="col-md-5">
                 <div id="choropleth"></div>
             </div> 
@@ -78,14 +82,10 @@
                 <div id="pie"></div>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-sm-3 col-md-5">
-                <div id="empty"></div>
-            </div>
-        </div>    
-        <div class="row">
-            <div class="col-md-5" style="width: 100%; height: 200px; margin: 35px">
-                <div id="marker"></div>
+            <div class="col-md-5">
+                <div id="marker" style = "position: relative; height: 55vh; width: 95vh"></div>
             </div> 
         </div>  
     </div>
