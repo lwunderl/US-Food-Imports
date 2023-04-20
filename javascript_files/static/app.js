@@ -153,7 +153,7 @@ function createMarkerChart(data, currentMonth, currentCommodity) {
                         color: "",
                         fillColor: getColor(portValue),
                         fillOpacity: .75,
-                        radius: 20000
+                        radius: 50000
                     }).bindPopup(
                         `<h4>${portName}</h4>
                         <p>Value of Imported ${currentCommodity}: ${portValue}</p>`
@@ -175,18 +175,13 @@ function createMarkerChart(data, currentMonth, currentCommodity) {
 };
 
 // Chart JS
-
 // Create bar graph
 function createBarGraph(data, currentCommodity) {
-    
     let monthArray = {"January":0,"February":0,"March":0,"April":0,"May":0,"June":0,"July":0,"August":0,"September":0,"October":0,"November":0,"December":0};
-    
     for (let i = 0; i < data.length; i++) {
-
         let monthNumber = data[i]._id.MONTH
         let totalValueMo = data[i]._id.GEN_VAL_MO
         let commodityName = data[i]._id.I_COMMODITY_SDESC
-
         if (commodityName == currentCommodity) {
             if (monthNumber == 1){
                 monthArray.January += totalValueMo
@@ -222,30 +217,35 @@ function createBarGraph(data, currentCommodity) {
                 monthArray.November += totalValueMo
             }
             else if (monthNumber == 12){
-                monthArray.December += totalValueMo         
+                monthArray.December += totalValueMo
             }
         }
     }
-
      // based on answer here: https://stackoverflow.com/questions/40056555/destroy-chart-js-bar-graph-to-redraw-other-graph-in-same-canvas
     // JS - Destroy exiting Chart Instance to reuse <canvas> element
     // <canvas> id
-    let chartStatus = Chart.getChart('bar'); 
+    let chartStatus = Chart.getChart('bar');
     if (chartStatus != undefined) {
         chartStatus.destroy();
     }
-
     let yValues = Object.values(monthArray)
     let xValues = Object.keys(monthArray)
-
     let path = document.getElementById('bar').getContext("2d");
     myChart = new Chart (path, {
         type: 'bar',
         options: {
             animation: true,
-            response: true,
+            responsive: true,
+            scales: {
+                y: {
+                    ticks: { color: "white", beginAtZero: true}},
+                x: {
+                    ticks: { color: "white", beginAtZero: true}},
+                },
+            maintainAspectRatio: true,
             plugins: {
                 title: {
+                    color: "white",
                     display: true,
                     text: [`Total USD ($) from January to December for:`, `${currentCommodity}`],
                     padding: {
@@ -260,20 +260,22 @@ function createBarGraph(data, currentCommodity) {
         },
         data: {
             labels: xValues,
-            datasets: 
+                color: "white",
+            datasets:
             [{
+                color: "white",
                 label: "Total Value ($) Millions",
                 data: yValues,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 205, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(201, 203, 207, 0.2)'
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(255, 159, 64, 0.7)',
+                    'rgba(255, 205, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(201, 203, 207, 0.7)'
                 ],
-                borderColor: [                    
+                borderColor: [
                     'rgb(255, 99, 132)',
                     'rgb(255, 159, 64)',
                     'rgb(255, 205, 86)',
@@ -289,11 +291,8 @@ function createBarGraph(data, currentCommodity) {
                 }
             }]
         }
-
     })
-
     myChart.update()
-    
 };
 
 // initialize chart.js object for bar chart
