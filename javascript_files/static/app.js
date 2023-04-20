@@ -11,160 +11,171 @@ function loadDropDowns(data) {
     let commodityDropDown = d3.select("#selCommodity");
     let commodityMenu = [];
     for (let i = 0; i < data.length; i++) {
-        let commodityDesc = data[i]._id.I_COMMODITY_SDESC
-        commodityMenu.push(commodityDesc);
+        commodityMenu.push(data[i]._id.I_COMMODITY_SDESC);
         };
 
     //filter array for duplicates https://stackoverflow.com/questions/18008025/remove-duplicate-item-from-array-javascript
     commodityMenu = commodityMenu.filter( function( item, index, inputArray ) {
         return inputArray.indexOf(item) == index;
     });
-
-    // sort
     commodityMenu = commodityMenu.sort();
-    
-    // for loop to for the dropdown menu
+
     for (let i = 0; i < commodityMenu.length; i++) {
         commodityDropDown.append("option").text(commodityMenu[i]).property("value", commodityMenu[i]);}
 
-
-    //For loop for the month menu
     let monthDropDown = d3.select("#selMonth");
     let monthMenu = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-        for (let i = 0; i < monthMenu.length; i++) {
-            monthDropDown.append("option").text(monthMenu[i]).property("value",i+1);
-        }
-};
+    for (let i = 0; i < monthMenu.length; i++) {
+        monthDropDown.append("option").text(monthMenu[i]).property("value",i+1);
+    }
+    }
 
- 
 //prepare data for info panel
 function infoPanel(data, currentMonth, currentCommodity) {
     let panelInfo = d3.select("#info-panel");
     panelInfo.text("COUNTRY OF ORIGIN: VALUE OF IMPORTS");
-
     for (let i = 0; i < data.length; i++) {
-        let commodityDesc = data[i]._id.I_COMMODITY_SDESC
-        let monthNumber = data[i]._id.MONTH
-
-        if (monthNumber == currentMonth && commodityDesc == currentCommodity) {
-
-            // Add country name and monthly general values
+        if (data[i]._id.MONTH == currentMonth && data[i]._id.I_COMMODITY_SDESC == currentCommodity) {
             panelInfo.append("tr").text(`${data[i]._id.CTY_NAME}: ${data[i]._id.GEN_VAL_MO}`);}
     }
 }
 
+// Create choropleth map
+function createChoropleth(data, currentMonth, currentCommodity) {
+    //prepare data for choropleth
+    let choroplethNames = []
+    let choroplethValues = []
+    for (let i = 0; i < data.length; i++) {
+        if (data[i]._id.MONTH == currentMonth && data[i]._id.I_COMMODITY_SDESC == currentCommodity) {
+            choroplethNames.push(data[i]._id.CTY_NAME);
+            choroplethValues.push(data[i]._id.GEN_VAL_MO);
+        }
+    }
+
+    let countryLocations = [{
+        type: 'choropleth',
+        locationmode: "country names",
+        locations: choroplethNames,
+        z: choroplethValues,
+        autocolorscale: false,
+        colorscale: [
+            [0,'rgb(252, 200, 1)'],[0.2,'rgb(252, 150, 1)'],
+            [0.4,'rgb(252, 100, 1)'], [0.6,'rgb(252, 75, 1)'],
+            [0.8,'rgb(252, 50, 1)'],[1,'rgb(252, 1, 1)']],
+        colorbar: {len: .25}
+    }];
+    
+    let choroplethLayout = {
+        title: {
+            text:`Country of Origin for<br>${currentCommodity} in MONTH ${currentMonth}`,
+            automargin: true
+        },
+        geo:{
+            projection:{
+                type: "robinson"
+            }
+        },
+        margin: {
+            l: 0,
+            r: 0,
+            b: 0,
+            t: 50,
+        }
+    };
+    Plotly.newPlot("choropleth", countryLocations, choroplethLayout, {responsive:true});
+}
 
 // Create pie chart
 function createPieChart(data, currentMonth, currentCommodity) {
-    
+
     //prepare pie chart data
-    portLabels = []
     portValues = []
-
+    portLabels = []
     for (let i = 0; i < data.length; i++) {
-        let monthNumber = data[i]._id.MONTH
-        let commodityName = data[i]._id.I_COMMODITY_SDESC
-        let allPortNames = data[i]._id.PORT_NAME
-        let allTotalValues= data[i].total_value
-
         //optimize return and loading time. There's a better way, but I'm not sure how to yield a return
-        if (monthNumber == currentMonth && commodityName == currentCommodity) {
-            portLabels.push(allPortNames);
-            portValues.push(allTotalValues);
+        if (data[i]._id.MONTH == currentMonth && data[i]._id.I_COMMODITY_SDESC == currentCommodity) {
+            portLabels.push(data[i]._id.PORT_NAME);
+            portValues.push(data[i].total_value);
             }
-    }
+        };
 
     let pieChart = [{
-        values: portValues.slice(0,10),
-        labels: portLabels.slice(0,10),
+        values: portValues,
+        labels: portLabels,
         type: "pie"
       }];
       
     let pieLayout = {
-        title:`Top Ten Ports of Entry for:<br>${currentCommodity}<br> MONTH: ${currentMonth}`,
+        title:`Ports of Entry for<br>${currentCommodity}<br>in MONTH ${currentMonth}`,
         height: 500,
         showlegend: false
       };
       
-    Plotly.newPlot("pie", pieChart, pieLayout, {responsive: true});
-};
+      Plotly.newPlot("pie", pieChart, pieLayout, {responsive: true});
+}
 
+//function to return color based on depth variable
+function getColor(d) {
+    return d > 50000000 ? "rgb(252, 1, 1)" :
+            d > 20000000 ? "rgb(252, 50, 1)" :
+            d > 10000000 ? "rgb(252, 75, 1)" :
+            d > 5000000 ? "rgb(252, 100, 1)" :
+            d > 1000000 ? "rgb(252, 150, 1)" :
+            "rgb(252, 200, 1)";
+}
 
-// Create map
-function createMapChart(data, currentMonth, currentCommodity) {
-    // Creating the map object 
-    let myMap = L.map('map', {
-        center: [39.73, -104.99],
-        zoom: 2,
-        layers: []
-        });
-    
-    let streets = L.tileLayer('http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}').addTo(myMap); 
+//create port map
+function createMarkerChart(data, currentMonth, currentCommodity) {
+    myMap.remove()
+    //create layer for street map
+    let streetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
 
-    let osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(myMap);
+    // create array variable to store circles
+    let portValues = [];
 
-    let baseMaps = {
-    "WorldStreetMap": streets,
-    "OpenStreetMap": osm
-    };
-    
-    // Click on map to see lat lon
-    const popup = L.popup();
-
-    function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(myMap);
-    };
-    
-    myMap.on('click', onMapClick);
-    
-    //create array variable to store the circles
-    let markersEvents = [];
-
-    // Loop through the data and set variables for lat, lon, name
+    //loop through dataFeatures and set variables for lat, lon, depth, and magnitude
     for (let i = 0; i < data.length; i++) {
-        let locationFeature = data[i]._id;
-
-        // Create variables for building circles
-        let monthNumber = data[i]._id.MONTH
-        let commodityName = data[i]._id.I_COMMODITY_SDESC
-
-        let portName = data[i]._id.PORT_NAME
-        let portLat = data[i]._id.LATITUDE
-        let portLon = data[i]._id.LONGITUDE
-
+        //create if statement variable to skip null
+        let portFeature = data[i]._id;
         
-        if (locationFeature) {
-                markersEvents.push(
-                    L.circle([portLat,portLon], {
-                        color: "red",
-                        fillColor: "red",
-                        fillOpacity: .75,
-                        radius: 10000 
-                    }).bindPopup(
-                        `<h4>${portName}</h4>`
-                    )
-                )
-            //}
-        }
+        //create variables for building circles
+        let portLat = portFeature.LATITUDE;
+        let portLon = portFeature.LONGITUDE;
+        let portName = portFeature.PORT_NAME;
+        let portValue = data[i].total_value;
 
+        //add to earthquakeEvents array with circle and pop-up information
+        if (portFeature.MONTH == currentMonth && portFeature.I_COMMODITY_SDESC == currentCommodity) {
+            if (portFeature){
+                portValues.push(
+                    L.circle([portLat, portLon], {
+                        color: "",
+                        fillColor: getColor(portValue),
+                        fillOpacity: .75,
+                        radius: 20000
+                    }).bindPopup(
+                        `<h4>${portName}</h4>
+                        <p>Value of Imported ${currentCommodity}: ${portValue}</p>`
+                        )
+                );
+            }
+        }
     }
 
-    let markers = L.layerGroup(markersEvents);
+    //turn port values array into a layer
+    ports = L.layerGroup(portValues);
 
-    let overlayMaps = {
-        "Ports": markers,
-        };
-    
-    L.control.layers(baseMaps,overlayMaps).addTo(myMap);
+    //create myMap variable
+    myMap = L.map("marker", {
+        center: [39.810492, -98.556061],
+        zoom: 4,
+        layers: [streetMap, ports]
+    });
 };
 
-let myChart = []
+// Chart JS
 
 // Create bar graph
 function createBarGraph(data, currentCommodity) {
@@ -233,7 +244,8 @@ function createBarGraph(data, currentCommodity) {
         type: 'bar',
         options: {
             animation: true,
-            response: true,
+            responsive: true,
+            maintainAspectRatio: true,
             plugins: {
                 title: {
                     display: true,
@@ -286,35 +298,33 @@ function createBarGraph(data, currentCommodity) {
     
 };
 
+// initialize chart.js object for bar chart
+let myChart = []
+let myMap = L.map("marker");
 
-//look at first set of data
+//look at data
 d3.json(commodityUrl).then(function (data){
     loadDropDowns(data)
-    infoPanel(data, 1, "APPLES, FRESH")
     createBarGraph(data, "APPLES, FRESH")
+    createChoropleth(data, 1, "APPLES, FRESH")
+    infoPanel(data, 1, "APPLES, FRESH")
 });
 
 d3.json(portUrl).then(function (data){
-    createPieChart(data, 1, "APPLES, FRESH"),
-    createMapChart(data, "APPLES, FRESH")
+    createPieChart(data, 1, "APPLES, FRESH")
+    createMarkerChart(data, 1, "APPLES, FRESH")
 });
-
 
 function onChanged() {
     let currentCommodity = d3.select("#selCommodity option:checked").text();
     let currentMonth = d3.select("#selMonth option:checked").property("value");
-
     d3.json(commodityUrl).then(function (data){
         infoPanel(data, currentMonth, currentCommodity);
+        createChoropleth(data, currentMonth, currentCommodity);
         createBarGraph(data, currentCommodity);
     });          
     d3.json(portUrl).then(function (data){
         createPieChart(data, currentMonth, currentCommodity);
-        createMapChart(data,currentMonth, currentCommodity)
+        createMarkerChart(data, currentMonth, currentCommodity);
     });
 };
-
-
-// d3.json(countryUrl).then(function (data){
-//     console.log(data);
-//});

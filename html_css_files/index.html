@@ -53,52 +53,57 @@
             <div class="card bg-transparent" style="padding: 0px 5px 20px 5px">
                 <h5 class="card-body">Select from the following options to see specific items and import seasonality:</h5>
                 <h7 class="card-text">Select Food Item</h7>
-                    <select id="selCommodity" onchange="optionChanged(this.value)">
+                    <select id="selCommodity" onchange="onChanged(this.value)">
                     </select>
                 <h7 class="card-text">Select Month</h7>
-                    <select id="selMonth" onchange="optionChanged(this.value)">
+                    <select id="selMonth" onchange="onChanged(this.value)">
                     </select>
             </div>
         </div>
-
-    <!-- Pie Chart and Choropleth map row -->
-
         <div class="row">
-            <div class="col-md-6 d-flex flex-column align-content-center">
-                <!-- LOOK HERE: replace below with <script type="text/javascript" src=file_name.js></script> -->
-                <!-- may need to format in style.css -->
-                <img src=".\images\pie_chart_img.png" alt="Pie Chart"/>
-            </div>
-            <div class="col-md-6 d-flex align-content-center">
-                <!-- LOOK HERE: replace below with <script type="text/javascript" src=file_name.js></script> -->
-                <!-- may need to format in style.css -->
-                <img src=".\images\choropleth_map_img.png" alt="Choropleth Map" />
+            <div class="col-md-5">
+                <div id="info-panel"></div>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-12 chart-container" style="position: relative; height:40vh; width:80vw">
+                <canvas id="bar"></canvas>
             </div>
         </div>
-
-    <!-- Horizontal bar chart analysis -->
         <div class="row">
-            <div class="col-md-6">
-            <h4 class ="comment-header">*Title for Bar Chart Analysis*</h4>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed egestas massa, ut suscipit quam. Nulla et mauris ac libero semper laoreet. Pellentesque at dignissim tortor. Suspendisse vitae sapien eu tellus mollis ornare. Morbi posuere eget ante et accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed egestas massa, ut suscipit quam. Nulla et mauris ac libero semper laoreet. Pellentesque at dignissim tortor. Suspendisse vitae sapien eu tellus mollis ornare. Morbi posuere eget ante et accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed egestas massa, ut suscipit quam. Nulla et mauris ac libero semper laoreet. Pellentesque at dignissim tortor. Suspendisse vitae sapien eu tellus mollis ornare. Morbi posuere eget ante et accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.</li>
-                </ul>
-            </div>
-            <div class="col-md-6 d-flex align-content-center">
-                <!-- LOOK HERE: replace below with <script type="text/javascript" src=file_name.js></script> -->
-                <!-- <div id = "bar" for any plotly or chart.js -->
-                <!-- may need to format in style.css -->
-                <img src=".\images\bar_chart_img.png" alt="Bar Chart" />
+            <div class="col-md-5">
+                <div id="choropleth"></div>
+            </div> 
+            <div class="col-md-5">
+                <div id="pie"></div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-5">
+                <div id="empty"></div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-md-5" style="width: 100%; height: 200px; margin: 35px">
+                <div id="marker"></div>
+            </div> 
+        </div>  
     </div>
 
-<!-- javascript and plotly scripts -->
+<!--Leaflet.js-->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+
+<!--Chart JS-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- d3 and plotly scripts -->
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<!--<script src="./static/app.js"></script>-->
+
+<!--Our script-->
+<script type="text/javascript" src="../javascript_files/static/app.js"></script>
 
 </body>
 </html>
