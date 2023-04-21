@@ -1,4 +1,4 @@
-# US-Food-Imports
+# US Food Imports
 
 ## Drawing Conclusions: Knowing the most consumed/imported selected food items along with their country of origin.
 
@@ -19,13 +19,14 @@ HTML/CSS,
 JavaScript
 
 ## Questions Addressed
-What are the trade relationship between the US and other countries?
-Where do the selected food items originate from?
-What are the imported values(USD) of the selected food items?
-which months(s) are the selected food items imported the most?
+- What are the trade relationship between the US and other countries?
+- Where do the selected food items originate from?
+- What are the imported values(USD) of the selected food items?
+- Which months(s) are the selected food items imported the most?
 
 ## Limitations
-Huge Dataset, it took longer than normal for the flask app to load.
+- Obtaining data from census.gov was much too large of a dataset which took longer than normal for the flask app to load.
+- Learning Chart.js was a new charting/visualization tool and quite different compared to Plotly or Leaflet.
 
 ## Instructions
 <ol>
@@ -38,17 +39,36 @@ Huge Dataset, it took longer than normal for the flask app to load.
 <li>Select data on the site in the browser and explore</li>
 </ol>
 
+## Example
+![image](https://user-images.githubusercontent.com/120594187/233515828-e6a2025f-4fec-4c4e-a961-49a5f076d7b9.png)
+
+
+![image](https://user-images.githubusercontent.com/120594187/233515884-d43fe605-7846-4335-98c1-dfa1deffb958.png)
+
+
+![image](https://user-images.githubusercontent.com/120594187/233515960-d5bd1cf2-63f6-4153-a1ee-6617ae700e55.png)
+
+
+
 ## Results
+- The selected food items with the highest imported values were Bananas ($208M), Strawberries ($210M), and NESOI cheese ($144M).
+- For the first half of the year (January-June), Bananas (Mar), Strawberries (Jan/Feb), and Processed Cheese (Mar) were the food items imported the most.
+- For the second half of the year (July-December), Blue-veined Cheese (Sept), NESOI Cheese (Nov), and Tea (Sept) were the food items imported the most.
+
+
+- The selected food items with the lowest imported values were Strawberries ($2M), Tea ($15M), and all categories of Cheese ($90M).
+- For the first half of the year (January-June), Bananas (Jan) and all categories of Cheese (Feb) were the food items imported the least.
+- For the second half of the year (July-December), Strawberries (Aug) and Tea (Dec) were the food items imported the least.
 
 ## Resources
-https://stackoverflow.com/questions/16586180/typeerror-objectid-is-not-json-serializable
-https://stackoverflow.com/questions/18008025/remove-duplicate-item-from-array-javascript
-https://plotly.com/javascript/reference/choropleth/ 
-https://plotly.com/javascript/reference/layout/
-https://plotly.com/javascript/pie-charts/
-https://getbootstrap.com/docs/5.3/getting-started/introduction/
-https://www.mongodb.com/docs/manual/
-https://flask-cors.readthedocs.io/en/latest/
+- https://stackoverflow.com/questions/16586180/typeerror-objectid-is-not-json-serializable
+- https://stackoverflow.com/questions/18008025/remove-duplicate-item-from-array-javascript
+- https://plotly.com/javascript/reference/choropleth/ 
+- https://plotly.com/javascript/reference/layout/
+- https://plotly.com/javascript/pie-charts/
+- https://getbootstrap.com/docs/5.3/getting-started/introduction/
+- https://www.mongodb.com/docs/manual/
+- https://flask-cors.readthedocs.io/en/latest/
 
 ## Contributing Members
 Luke Wunderlin, Tyler Fowler, Kudrirat Abdulsalam, and Steffi Yang
