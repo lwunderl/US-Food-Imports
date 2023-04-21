@@ -49,6 +49,8 @@ JavaScript
 ![image](https://user-images.githubusercontent.com/120594187/233515960-d5bd1cf2-63f6-4153-a1ee-6617ae700e55.png)
 
 
+![Screenshot (114)](https://user-images.githubusercontent.com/120594187/233516748-dc416960-efbd-4bd1-a231-a4dfc7a689a0.png)
+
 
 ## Results
 - The selected food items with the highest imported values were Bananas ($208M), Strawberries ($210M), and NESOI cheese ($144M).
